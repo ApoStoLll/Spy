@@ -5,6 +5,6 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.missclick.spy.ui.SplashFragment"
+        android:name="com.missclick.spy.ui.splash.SplashFragment"
         android:label="SplashFragment" />
 </navigation>

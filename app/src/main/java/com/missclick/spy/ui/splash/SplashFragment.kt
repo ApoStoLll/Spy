@@ -1,4 +1,4 @@
-package com.missclick.spy.ui
+package com.missclick.spy.ui.splash
 
 import androidx.fragment.app.Fragment
 import com.missclick.spy.R
