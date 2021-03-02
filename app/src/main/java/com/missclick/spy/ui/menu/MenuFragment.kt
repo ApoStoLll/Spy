@@ -6,4 +6,5 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MenuFragment : Fragment(R.layout.fragment_menu) {
     private val viewModel : MenuViewModel by viewModel()
+
 }
