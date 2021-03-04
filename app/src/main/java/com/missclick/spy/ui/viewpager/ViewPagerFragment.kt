@@ -3,8 +3,12 @@ package com.missclick.spy.ui.viewpager
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager.widget.ViewPager
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.missclick.spy.R
 import com.missclick.spy.adapters.ViewPagerAdapter
 import com.missclick.spy.databinding.FragmentGuideBinding
@@ -21,6 +25,12 @@ class ViewPagerFragment : Fragment(R.layout.fragment_view_pager){
         binding.btnNext.setOnClickListener {
             findNavController().navigate(R.id.action_viewPagerFragment_to_menuFragment)
         }
+//        binding.tabDots.setupWithViewPager(binding.viewPager)
+        TabLayoutMediator( binding.tabDots, binding.viewPager) { tab, position ->
+            binding.viewPager.setCurrentItem(tab.position, true)
+        }.attach()
     }
 }
+
+
 
