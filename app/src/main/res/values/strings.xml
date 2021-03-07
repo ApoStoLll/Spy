@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Spy</string>
+    <string name="back">Назад</string>
+
+    <string name="players">Игроки</string>
+    <string name="player">Игрок</string>
+    <string name="spies">Шпионы</string>
+    <string name="timer">Таймер</string>
+    <string name="set">Набор</string>
+    <string name="click_to_see_you_role">Нажми, чтобы увидеть свою роль</string>
+    <string name="you_member">Ты местный. Все игроки, кроме Шпиона, знают эту локацию. Задавай вопросы другим игрокам, чтоб узнать кто из них шпион</string>
+    <string name="you_spy_hint">Попробуй понять, про какую локацию говорят местные</string>
+    <string name="you_spy">Ты шпион</string>
+    <string name="hint_timer">Начинайте задавать вопросы! Успейте вычислить Шпиона прежде, чем истечет время, иначе он победит</string>
+    <string name="was_spy">Шпионом был игрок №</string>
+    <string name="find">Узнать, кто шпион</string>
+
 </resources>
