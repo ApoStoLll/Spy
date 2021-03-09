@@ -24,12 +24,23 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         var spy = 1
         var time = 3
         var set = "базовый"
-        binding.textPlayers.text = players.toString()
+        updatePlayers(players)
         binding.textSpy.text = spy.toString()
         binding.textTimer.text = time.toString() + " " + getString(R.string.min)
         binding.textSet.text = set
 
-
+        binding.imagePlayersLeft.setOnClickListener {
+            if (players > 1 )
+                players -= 1
+//            if (players == 1)
+                //todo change color of the image
+            updatePlayers(players)
+        }
+        binding.imagePlayersRight.setOnClickListener {
+//            if (players == 1) //todo change color of the image
+            players += 1
+            updatePlayers(players)
+        }
 
         val param = GameParams(
             players = players,
@@ -40,6 +51,10 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         binding.buttonStart.setOnClickListener {
             findNavController().navigate(R.id.action_menuFragment_to_cardsFragment, CardsFragment.newInstance(params = param))
         }
+    }
+
+    private fun updatePlayers(players : Int){
+        binding.textPlayers.text = players.toString()
     }
 
 }

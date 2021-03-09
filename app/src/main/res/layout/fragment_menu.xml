@@ -86,7 +86,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/image_players_left"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_marginEnd="8dp"
@@ -97,7 +97,7 @@
         app:srcCompat="@drawable/ic_orange_left" />
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/image_players_right"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_marginStart="8dp"
