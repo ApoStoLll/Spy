@@ -55,3 +55,4 @@ class TimerFragment : Fragment(R.layout.fragment_timer){
             }
     }
 }
+
