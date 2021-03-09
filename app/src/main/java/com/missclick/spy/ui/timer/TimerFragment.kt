@@ -1,5 +1,6 @@
 package com.missclick.spy.ui.timer
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
@@ -12,7 +13,7 @@ import com.missclick.spy.ui.cards.CardsFragment
 
 private const val PARAMS_ARG = "params"
 
-class TimerFragment(countDownInterval: Long) : Fragment(R.layout.fragment_timer){
+class TimerFragment : Fragment(R.layout.fragment_timer){
 
     private val binding by viewBinding(FragmentTimerBinding::bind)
 
@@ -29,14 +30,20 @@ class TimerFragment(countDownInterval: Long) : Fragment(R.layout.fragment_timer)
         super.onViewCreated(view, savedInstanceState)
         val timer = object : CountDownTimer(time?.toLong()!!, 1000){
             override fun onFinish() {
-                TODO("Not yet implemented")
+                //todo string to values
+                binding.timerText.text = "Time end"
             }
 
+            @SuppressLint("SetTextI18n")
             override fun onTick(millisUntilFinished: Long) {
-                TODO("Not yet implemented")
+                val sec = millisUntilFinished % 60000 / 1000
+                val t =
+                    if(sec < 10) "${millisUntilFinished / 1000 / 60}:0${sec}"
+                    else "${millisUntilFinished / 1000 / 60}:${sec}"
+                binding.timerText.text = t
             }
-
         }
+        timer.start()
     }
 
     companion object{
