@@ -1,4 +1,4 @@
-package com.missclick.spy.data.local.entities
+package com.missclick.spy.data.local
 
 import com.missclick.spy.data.local.ILocalDataSource
 import com.missclick.spy.data.local.WordsDB

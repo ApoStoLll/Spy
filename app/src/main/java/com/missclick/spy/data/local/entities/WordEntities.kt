@@ -5,6 +5,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+//todo add Language
 @Entity(tableName = "db")
 data class WordEntities(
     @PrimaryKey(autoGenerate = true)

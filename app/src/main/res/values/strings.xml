@@ -14,5 +14,7 @@
     <string name="hint_timer">Начинайте задавать вопросы! Успейте вычислить Шпиона прежде, чем истечет время, иначе он победит</string>
     <string name="was_spy">Шпионом был игрок №</string>
     <string name="find">Узнать, кто шпион</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

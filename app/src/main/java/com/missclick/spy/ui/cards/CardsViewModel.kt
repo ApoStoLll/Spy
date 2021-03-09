@@ -9,7 +9,8 @@ import kotlinx.coroutines.launch
 
 class CardsViewModel(private val repository: IRepository) : ViewModel() {
 
-    private val cardState = MutableLiveData<CardState>()
+    val cardState = MutableLiveData<CardState>(CardState.ClosedCard(1))
+
 
     fun getRandomWord(category : String) = liveData<String>{
         viewModelScope.launch {
@@ -20,9 +21,17 @@ class CardsViewModel(private val repository: IRepository) : ViewModel() {
 
     fun getSpy(players : Int) =
         (1..players).random()
+
+    fun changeState(){
+        if (cardState.value is CardState.ClosedCard){
+            cardState.value = CardState.OpenedCard((cardState.value as CardState).number + 1)
+        } else {
+            cardState.value = CardState.ClosedCard((cardState.value as CardState).number)
+        }
+    }
 }
 
-sealed class CardState{
-    object ClosedCard : CardState()
-    class OpenedCard(val number : Int)
+sealed class CardState(val number : Int){
+    class ClosedCard(number : Int) : CardState(number)
+    class OpenedCard(number : Int) : CardState(number)
 }

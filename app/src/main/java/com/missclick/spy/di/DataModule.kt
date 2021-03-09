@@ -6,8 +6,7 @@ import com.missclick.spy.data.IRepository
 import com.missclick.spy.data.Repository
 import com.missclick.spy.data.local.ILocalDataSource
 import com.missclick.spy.data.local.WordsDB
-import com.missclick.spy.data.local.WordsDao
-import com.missclick.spy.data.local.entities.LocalDataSource
+import com.missclick.spy.data.local.LocalDataSource
 import org.koin.dsl.module
 
 val dataModule = module {
