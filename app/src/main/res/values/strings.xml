@@ -2,7 +2,9 @@
     <string name="app_name">Spy</string>
     <string name="back">Назад</string>
 
+    <string name="min">мин</string>
     <string name="players">Игроки</string>
+    <string name="start">Старт</string>
     <string name="player">Игрок</string>
     <string name="spies">Шпионы</string>
     <string name="timer">Таймер</string>

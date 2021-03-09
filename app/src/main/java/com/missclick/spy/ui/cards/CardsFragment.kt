@@ -76,10 +76,10 @@ class CardsFragment : Fragment(R.layout.fragment_cards) {
 
     companion object{
         fun newInstance(params: GameParams) =
-                CardsFragment().apply {
-                    arguments = Bundle().apply {
+                Bundle().apply {
+
                         putSerializable(PARAMS_ARG, params)
                     }
-                }
+
     }
 }
