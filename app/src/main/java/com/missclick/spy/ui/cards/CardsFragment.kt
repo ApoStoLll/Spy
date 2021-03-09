@@ -26,10 +26,10 @@ class CardsFragment : Fragment(R.layout.fragment_cards) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getRandomWord(params!!.category).observe(viewLifecycleOwner){
-            val spy = viewModel.getSpy(params!!.players)
-
-        }
+//        viewModel.getRandomWord(params!!.category).observe(viewLifecycleOwner){
+//            val spy = viewModel.getSpy(params!!.players)
+//
+//        }
 
     }
 

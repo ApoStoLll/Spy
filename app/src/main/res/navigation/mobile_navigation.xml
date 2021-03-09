@@ -19,5 +19,13 @@
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.missclick.spy.ui.menu.MenuFragment"
-        android:label="MenuFragment" />
+        android:label="MenuFragment" >
+        <action
+            android:id="@+id/action_menuFragment_to_cardsFragment"
+            app:destination="@id/cardsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardsFragment"
+        android:name="com.missclick.spy.ui.cards.CardsFragment"
+        android:label="CardsFragment" />
 </navigation>
