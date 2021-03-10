@@ -17,7 +17,7 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
     private val binding by viewBinding(FragmentMenuBinding::bind)
 
 
-    @SuppressLint("ResourceType")
+    @SuppressLint("ResourceType", "UseCompatLoadingForDrawables")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -26,47 +26,51 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         var time = 3
         var set = "базовый"
         updatePlayers(players)
-        updateSpies(spies)
+        updateSpies(spies,players)
         updateTime(time)
         binding.textSet.text = set
 
         binding.imagePlayersLeft.setOnClickListener {
-            if (players > 1 )
+            if (players > 2){
                 players -= 1
-//            if (players == 1)
-//                binding.imagePlayersLeft.setStrokeColorResource(resources.getColor(R.color.orange2))
-            updatePlayers(players)
+                if (players == spies)
+                    spies -= 1
+                updatePlayers(players)
+                updateSpies(spies,players)
+            }
         }
         binding.imagePlayersRight.setOnClickListener {
-//            if (players == 1) //todo change color of the image
-            players += 1
-            updatePlayers(players)
+            if (players < 20){
+                players += 1
+                updatePlayers(players)
+                updateSpies(spies,players)
+            }
         }
 
         binding.imageSpiesLeft.setOnClickListener {
-            if (spies > 1 )
+            if (spies > 1){
                 spies -= 1
-//            if (players == 1)
-            //todo change color of the image
-            updateSpies(spies)
+                updateSpies(spies,players)
+            }
         }
         binding.imageSpiesRight.setOnClickListener {
-//            if (spies == 1) //todo change color of the image
-            spies += 1
-            updateSpies(spies)
+            if (spies < players - 1){
+                spies += 1
+                updateSpies(spies,players)
+            }
         }
 
         binding.imageTimeLeft.setOnClickListener {
-            if (time > 1 )
+            if (time > 1){
                 time -= 1
-//            if (time == 1)
-            //todo change color of the image
-            updateTime(time)
+                updateTime(time)
+            }
         }
         binding.imageTimeRight.setOnClickListener {
-//            if (time == 1) //todo change color of the image
-            time += 1
-            updateTime(time)
+            if (time < 9){
+                time += 1
+                updateTime(time)
+            }
         }
 
         val param = GameParams(
@@ -86,16 +90,42 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         }
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private fun updatePlayers(players : Int){
+        if (players == 2)
+            binding.imagePlayersLeft.setImageDrawable(resources.getDrawable(R.drawable.ic_orange_left_2))
+        else
+            binding.imagePlayersLeft.setImageDrawable(resources.getDrawable(R.drawable.ic_orange_left))
+        if (players == 20)
+            binding.imagePlayersRight.setImageDrawable(resources.getDrawable(R.drawable.ic_orange_right_2))
+        else
+            binding.imagePlayersRight.setImageDrawable(resources.getDrawable(R.drawable.ic_orange_right))
         binding.textPlayers.text = players.toString()
     }
 
-    private fun updateSpies(spies : Int){
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private fun updateSpies(spies : Int, players: Int){
+        if (spies == 1)
+            binding.imageSpiesLeft.setImageDrawable(resources.getDrawable(R.drawable.ic_orange_left_2))
+        else
+            binding.imageSpiesLeft.setImageDrawable(resources.getDrawable(R.drawable.ic_orange_left))
+        if (players == spies + 1)
+            binding.imageSpiesRight.setImageDrawable(resources.getDrawable(R.drawable.ic_orange_right_2))
+        else
+            binding.imageSpiesRight.setImageDrawable(resources.getDrawable(R.drawable.ic_orange_right))
         binding.textSpy.text = spies.toString()
     }
 
     @SuppressLint("SetTextI18n")
     private fun updateTime(time : Int){
+        if (time == 1)
+            binding.imageTimeLeft.setImageDrawable(resources.getDrawable(R.drawable.ic_orange_left_2))
+        else
+            binding.imageTimeLeft.setImageDrawable(resources.getDrawable(R.drawable.ic_orange_left))
+        if (time == 9)
+            binding.imageTimeRight.setImageDrawable(resources.getDrawable(R.drawable.ic_orange_right_2))
+        else
+            binding.imageTimeRight.setImageDrawable(resources.getDrawable(R.drawable.ic_orange_right))
         binding.textTimer.text = time.toString() + " " + getString(R.string.min)
     }
 
