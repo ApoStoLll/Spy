@@ -73,13 +73,14 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
             }
         }
 
-        val param = GameParams(
-            players = players,
-            spy = spies,
-            time = time * 1000 * 60,
-            category = set
-        )
+
         binding.buttonStart.setOnClickListener {
+            val param = GameParams(
+                    players = players,
+                    spy = spies,
+                    time = time * 1000 * 60,
+                    category = set
+            )
             findNavController().navigate(R.id.action_menuFragment_to_cardsFragment, CardsFragment.newInstance(params = param))
         }
         binding.imageHelp.setOnClickListener {
