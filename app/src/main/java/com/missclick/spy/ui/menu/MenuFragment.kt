@@ -24,7 +24,7 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         var players = 4
         var spies = 1
         var time = 3
-        var set = "базовый"
+        var set = "Basic"
         updatePlayers(players)
         updateSpies(spies)
         updateTime(time)
@@ -72,7 +72,7 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         val param = GameParams(
             players = players,
             spy = spies,
-            time = time,
+            time = time * 1000 * 60,
             category = set
         )
         binding.buttonStart.setOnClickListener {

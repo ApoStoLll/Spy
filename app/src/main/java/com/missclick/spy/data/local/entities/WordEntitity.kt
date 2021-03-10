@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 
 //todo add Language
 @Entity(tableName = "db")
-data class WordEntities(
+data class WordEntitity(
     @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "id")

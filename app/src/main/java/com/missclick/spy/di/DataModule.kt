@@ -7,6 +7,7 @@ import com.missclick.spy.data.Repository
 import com.missclick.spy.data.local.ILocalDataSource
 import com.missclick.spy.data.local.WordsDB
 import com.missclick.spy.data.local.LocalDataSource
+import com.missclick.spy.data.local.SettingsRepository
 import org.koin.dsl.module
 
 val dataModule = module {
@@ -18,6 +19,9 @@ val dataModule = module {
     }
     single {
         provideRepository(get())
+    }
+    single {
+        SettingsRepository(get())
     }
 }
 

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/mobile_navigation"
-    app:startDestination="@id/viewPagerFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.missclick.spy.ui.splash.SplashFragment"
         android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment" />
     </fragment>
     <fragment
         android:id="@+id/viewPagerFragment"
@@ -35,6 +38,7 @@
         android:name="com.missclick.spy.ui.cards.CardsFragment"
         android:label="CardsFragment" >
         <action
+            app:popUpTo="@id/menuFragment"
             android:id="@+id/action_cardsFragment_to_timerFragment"
             app:destination="@id/timerFragment" />
     </fragment>
