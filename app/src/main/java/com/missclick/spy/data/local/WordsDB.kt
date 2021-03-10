@@ -2,9 +2,9 @@ package com.missclick.spy.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.missclick.spy.data.local.entities.WordEntities
+import com.missclick.spy.data.local.entities.WordEntitity
 
-@Database(entities = [WordEntities::class], version = 1)
+@Database(entities = [WordEntitity::class], version = 1)
 abstract class WordsDB : RoomDatabase(){
     abstract fun dao() : WordsDao
 }

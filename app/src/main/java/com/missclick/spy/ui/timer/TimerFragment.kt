@@ -17,6 +17,8 @@ class TimerFragment : Fragment(R.layout.fragment_timer){
 
     private val binding by viewBinding(FragmentTimerBinding::bind)
 
+    var timer : CountDownTimer? = null
+
     private var time : Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +30,7 @@ class TimerFragment : Fragment(R.layout.fragment_timer){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val timer = object : CountDownTimer(time?.toLong()!!, 1000){
+        timer = object : CountDownTimer(time?.toLong()!!, 1000){
             override fun onFinish() {
                 //todo string to values
                 binding.timerText.text = "Time end"
@@ -43,15 +45,18 @@ class TimerFragment : Fragment(R.layout.fragment_timer){
                 binding.timerText.text = t
             }
         }
-        timer.start()
+        (timer as CountDownTimer).start()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        timer?.cancel()
     }
 
     companion object{
         fun newInstance(time: Int) =
-            CardsFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(PARAMS_ARG, time)
-                }
+            Bundle().apply {
+                putInt(PARAMS_ARG, time)
             }
     }
 }
