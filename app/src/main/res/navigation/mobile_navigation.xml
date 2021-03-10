@@ -24,15 +24,32 @@
             android:id="@+id/action_menuFragment_to_cardsFragment"
             app:destination="@id/cardsFragment" />
         <action
-            android:id="@+id/action_menuFragment_to_timerFragment"
-            app:destination="@id/timerFragment" />
+            android:id="@+id/action_cardsFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/action_cardsFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/cardsFragment"
         android:name="com.missclick.spy.ui.cards.CardsFragment"
-        android:label="CardsFragment" />
+        android:label="CardsFragment" >
+        <action
+            android:id="@+id/action_cardsFragment_to_timerFragment"
+            app:destination="@id/timerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/timerFragment"
         android:name="com.missclick.spy.ui.timer.TimerFragment"
         android:label="TimerFragment" />
+
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.missclick.spy.ui.help.HelpFragment"
+         />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.missclick.spy.ui.settings.SettingsFragment"
+        />
 </navigation>

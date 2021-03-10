@@ -16,24 +16,25 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
     private val viewModel : MenuViewModel by viewModel()
     private val binding by viewBinding(FragmentMenuBinding::bind)
 
-    @SuppressLint("SetTextI18n")
+
+    @SuppressLint("ResourceType")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         var players = 4
-        var spy = 1
+        var spies = 1
         var time = 3
         var set = "базовый"
         updatePlayers(players)
-        binding.textSpy.text = spy.toString()
-        binding.textTimer.text = time.toString() + " " + getString(R.string.min)
+        updateSpies(spies)
+        updateTime(time)
         binding.textSet.text = set
 
         binding.imagePlayersLeft.setOnClickListener {
             if (players > 1 )
                 players -= 1
 //            if (players == 1)
-                //todo change color of the image
+//                binding.imagePlayersLeft.setStrokeColorResource(resources.getColor(R.color.orange2))
             updatePlayers(players)
         }
         binding.imagePlayersRight.setOnClickListener {
@@ -42,19 +43,61 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
             updatePlayers(players)
         }
 
+        binding.imageSpiesLeft.setOnClickListener {
+            if (spies > 1 )
+                spies -= 1
+//            if (players == 1)
+            //todo change color of the image
+            updateSpies(spies)
+        }
+        binding.imageSpiesRight.setOnClickListener {
+//            if (spies == 1) //todo change color of the image
+            spies += 1
+            updateSpies(spies)
+        }
+
+        binding.imageTimeLeft.setOnClickListener {
+            if (time > 1 )
+                time -= 1
+//            if (time == 1)
+            //todo change color of the image
+            updateTime(time)
+        }
+        binding.imageTimeRight.setOnClickListener {
+//            if (time == 1) //todo change color of the image
+            time += 1
+            updateTime(time)
+        }
+
         val param = GameParams(
             players = players,
-            spy = spy,
+            spy = spies,
             time = time,
             category = set
         )
         binding.buttonStart.setOnClickListener {
             findNavController().navigate(R.id.action_menuFragment_to_cardsFragment, CardsFragment.newInstance(params = param))
         }
+        binding.imageHelp.setOnClickListener {
+            findNavController().navigate(R.id.action_cardsFragment_to_helpFragment)
+        }
+        binding.imageSettings.setOnClickListener {
+            findNavController().navigate(R.id.action_cardsFragment_to_settingsFragment)
+        }
     }
 
     private fun updatePlayers(players : Int){
         binding.textPlayers.text = players.toString()
     }
+
+    private fun updateSpies(spies : Int){
+        binding.textSpy.text = spies.toString()
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun updateTime(time : Int){
+        binding.textTimer.text = time.toString() + " " + getString(R.string.min)
+    }
+
 
 }
