@@ -24,12 +24,15 @@
         android:name="com.missclick.spy.ui.menu.MenuFragment"
         android:label="MenuFragment" >
         <action
+            app:popUpTo="@id/menuFragment"
             android:id="@+id/action_menuFragment_to_cardsFragment"
             app:destination="@id/cardsFragment" />
         <action
+            app:popUpTo="@id/menuFragment"
             android:id="@+id/action_cardsFragment_to_helpFragment"
             app:destination="@id/helpFragment" />
         <action
+            app:popUpTo="@id/menuFragment"
             android:id="@+id/action_cardsFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
     </fragment>
@@ -45,7 +48,11 @@
     <fragment
         android:id="@+id/timerFragment"
         android:name="com.missclick.spy.ui.timer.TimerFragment"
-        android:label="TimerFragment" />
+        android:label="TimerFragment" >
+        <action
+            android:id="@+id/action_timerFragment_to_endFragment"
+            app:destination="@id/endFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/helpFragment"
@@ -56,4 +63,13 @@
         android:id="@+id/settingsFragment"
         android:name="com.missclick.spy.ui.settings.SettingsFragment"
         />
+
+    <fragment
+        android:id="@+id/endFragment"
+        android:name="com.missclick.spy.ui.end.EndFragment"
+        >
+        <action
+            android:id="@+id/action_endFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
 </navigation>

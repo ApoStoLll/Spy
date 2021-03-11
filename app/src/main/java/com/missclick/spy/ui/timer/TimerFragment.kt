@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.missclick.spy.R
 import com.missclick.spy.data.models.GameParams
 import com.missclick.spy.databinding.FragmentTimerBinding
 import com.missclick.spy.ui.cards.CardsFragment
+import com.missclick.spy.ui.end.EndFragment
 
 private const val PARAMS_ARG = "params"
 
@@ -34,6 +36,7 @@ class TimerFragment : Fragment(R.layout.fragment_timer){
             override fun onFinish() {
                 //todo string to values
                 binding.timerText.text = "Time end"
+
             }
 
             @SuppressLint("SetTextI18n")
@@ -46,6 +49,14 @@ class TimerFragment : Fragment(R.layout.fragment_timer){
             }
         }
         (timer as CountDownTimer).start()
+        binding.buttonShowSpy.setOnClickListener {
+            navigate(arrayListOf(2,3))
+        }
+    }
+
+    private fun navigate(spies : ArrayList<Int>){
+        timer?.cancel()
+        findNavController().navigate(R.id.action_timerFragment_to_endFragment,EndFragment.newInstance(spy = spies))
     }
 
     override fun onDestroy() {

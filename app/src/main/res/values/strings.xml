@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Spy</string>
     <string name="back">Назад</string>
+    <string name="skip">Пропустить</string>
 
     <string name="min">мин</string>
     <string name="players">Игроки</string>
@@ -14,10 +15,18 @@
     <string name="you_spy_hint">Попробуй понять, про какую локацию говорят местные</string>
     <string name="you_spy">Ты шпион</string>
     <string name="hint_timer">Начинайте задавать вопросы! Успейте вычислить Шпиона прежде, чем истечет время, иначе он победит</string>
-    <string name="was_spy">Шпионом был игрок №</string>
+    <string name="was_spy">Шпионом был</string>
+    <string name="were_spies">Шпионами были</string>
+    <string name="restart">Еще раз</string>
+
+
     <string name="find">Узнать, кто шпион</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="eng">English</string>
+    <string name="rus">Русский</string>
+    <string name="ukr">Українська</string>
 
     <string-array name="Basic">
         <item>Цирк(Если ты не волк)</item>
