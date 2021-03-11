@@ -34,7 +34,7 @@ class CardsViewModel(private val repository: IRepository) : ViewModel() {
         } else {
             val number = (cardState.value as CardState).number
             if(number > players) cardState.value = CardState.EndCard
-            cardState.value = CardState.ClosedCard(number)
+            else cardState.value = CardState.ClosedCard(number)
         }
     }
 }

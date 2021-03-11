@@ -8,15 +8,18 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.missclick.spy.MainActivity
 import com.missclick.spy.R
+import com.missclick.spy.data.local.SettingsRepository
 import com.missclick.spy.databinding.FragmentSettingsBinding
+import org.koin.android.ext.android.inject
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
-    val binding by viewBinding(FragmentSettingsBinding::bind)
-
+    private val binding by viewBinding(FragmentSettingsBinding::bind)
+    private val settingsRepository : SettingsRepository by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         changeColor((activity as MainActivity).language,true)
+        //todo instead of activity as MainActivity - settingsRepository
         binding.cardViewEng.setOnClickListener {
             changeColor((activity as MainActivity).language,false)
             (activity as MainActivity).language = "eng"

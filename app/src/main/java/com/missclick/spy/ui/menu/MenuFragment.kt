@@ -20,7 +20,7 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
     @SuppressLint("ResourceType", "UseCompatLoadingForDrawables")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        //todo default from dataStore
         var players = 4
         var spies = 1
         var time = 3
@@ -120,7 +120,8 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
     @SuppressLint("SetTextI18n")
     private fun updateTime(time : Int){
         if (time == 1)
-            binding.imageTimeLeft.setImageDrawable(resources.getDrawable(R.drawable.ic_orange_left_2))
+            //binding.imageTimeLeft.setImageDrawable(resources.getDrawable(R.drawable.ic_orange_left_2))
+            binding.imageTimeLeft.setImageResource(R.drawable.ic_orange_left_2) //todo sdelat tak
         else
             binding.imageTimeLeft.setImageDrawable(resources.getDrawable(R.drawable.ic_orange_left))
         if (time == 9)
