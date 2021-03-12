@@ -28,6 +28,7 @@
     <string name="rus">Русский</string>
     <string name="ukr">Українська</string>
 
+    <string name="Basic"></string>
     <string-array name="Basic">
         <item>Цирк(Если ты не волк)</item>
         <item>Парк</item>

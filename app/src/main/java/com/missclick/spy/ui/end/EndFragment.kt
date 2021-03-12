@@ -30,7 +30,7 @@ class EndFragment : Fragment(R.layout.fragment_end) {
         super.onViewCreated(view, savedInstanceState)
 
         if (spies!!.size == 1)
-            binding.textPlayer.text = "${binding.textPlayer} ${spies!![0]}"
+            binding.textPlayer.text = "${binding.textPlayer.text} ${spies!![0]}"
         else{
             var spy = ""
             for (i in spies!!){

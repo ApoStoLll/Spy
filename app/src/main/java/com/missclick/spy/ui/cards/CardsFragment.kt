@@ -42,8 +42,10 @@ class CardsFragment : Fragment(R.layout.fragment_cards) {
 
         if (params != null){
             viewModel.getRandomWord(params!!.category).observe(viewLifecycleOwner){ role ->
-                Log.e("Role", role)
-                val spy = viewModel.getSpy(params!!.players)
+                //Log.e("Role", role)
+                //val spy = viewModel.getSpy(params!!.players)
+                val spies = viewModel.getSpies(params!!.players, params!!.spy)
+                //Log.e("Spy", spy.toString())
                 viewModel.cardState.observe(viewLifecycleOwner){
                     //Log.e("Kek", "CardState")
                     when(it){
@@ -54,7 +56,8 @@ class CardsFragment : Fragment(R.layout.fragment_cards) {
                                 descriptionRole.text = getString(R.string.click_to_see_you_role)
                             }
                         is CardState.OpenedCard -> {
-                            if (it.number == spy)
+                            //Log.e("Number", it.number.toString())
+                            if (it.number in spies)
                                 binding.apply {
                                     roleImage.setImageResource(R.drawable.ic_spy_hat)
                                     nameRole.text = getString(R.string.you_spy)
@@ -69,7 +72,9 @@ class CardsFragment : Fragment(R.layout.fragment_cards) {
                             binding.roleImage.visibility = View.VISIBLE
                         }
                         is CardState.EndCard -> {
-                            findNavController().navigate(R.id.action_cardsFragment_to_timerFragment, TimerFragment.newInstance(params!!.time))
+                            findNavController().navigate(
+                                    R.id.action_cardsFragment_to_timerFragment,
+                                    TimerFragment.newInstance(params!!.time, ArrayList(spies)))
                         }
                     }
                 }

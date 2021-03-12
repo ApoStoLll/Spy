@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
-        android:text="@string/players"
+        android:text="@string/player"
         android:textColor="@color/orange"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"

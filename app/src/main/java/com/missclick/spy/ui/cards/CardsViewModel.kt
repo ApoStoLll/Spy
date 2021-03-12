@@ -28,13 +28,16 @@ class CardsViewModel(private val repository: IRepository) : ViewModel() {
     fun getSpy(players : Int) =
         (1..players).random()
 
+    fun getSpies(players : Int, spies : Int) =
+        (1..players).shuffled().take(spies)
+
     fun changeState(players: Int){
         if (cardState.value is CardState.ClosedCard){
-            cardState.value = CardState.OpenedCard((cardState.value as CardState).number + 1)
+            cardState.value = CardState.OpenedCard((cardState.value as CardState).number)
         } else {
             val number = (cardState.value as CardState).number
-            if(number > players) cardState.value = CardState.EndCard
-            else cardState.value = CardState.ClosedCard(number)
+            if(number >= players) cardState.value = CardState.EndCard
+            else cardState.value = CardState.ClosedCard(number + 1)
         }
     }
 }
