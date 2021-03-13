@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.missclick.spy.R
@@ -20,11 +22,24 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
     @SuppressLint("ResourceType", "UseCompatLoadingForDrawables")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //todo default from dataStore
         var players = 4
         var spies = 1
         var time = 3
         var set = "Basic"
+        //todo default from dataStore
+//        viewModel.players.asLiveData().observe(viewLifecycleOwner){
+//            players = it
+//        }
+//        viewModel.spy.asLiveData().observe(viewLifecycleOwner){
+//            spies = it
+//        }
+//        viewModel.time.asLiveData().observe(viewLifecycleOwner){
+//            time = it
+//        }
+//        viewModel.set.asLiveData().observe(viewLifecycleOwner){
+//            set = it
+//        }
+
         updatePlayers(players)
         updateSpies(spies,players)
         updateTime(time)
@@ -78,9 +93,10 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
             val param = GameParams(
                     players = players,
                     spy = spies,
-                    time = time * 1000 * 60,
+                    time = time,
                     category = set
             )
+            viewModel.setGameParams(param)
             findNavController().navigate(R.id.action_menuFragment_to_cardsFragment, CardsFragment.newInstance(params = param))
         }
         binding.imageHelp.setOnClickListener {
@@ -88,6 +104,9 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         }
         binding.imageSettings.setOnClickListener {
             findNavController().navigate(R.id.action_cardsFragment_to_settingsFragment)
+        }
+        binding.imageSets.setOnClickListener {
+            findNavController().navigate(R.id.action_menuFragment_to_setsFragment)
         }
     }
 

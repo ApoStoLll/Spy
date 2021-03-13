@@ -2,6 +2,7 @@
     <string name="app_name">Spy</string>
     <string name="back">Назад</string>
     <string name="skip">Пропустить</string>
+    <string name="next">Далее</string>
 
     <string name="min">мин</string>
     <string name="players">Игроки</string>
@@ -18,6 +19,7 @@
     <string name="was_spy">Шпионом был</string>
     <string name="were_spies">Шпионами были</string>
     <string name="restart">Еще раз</string>
+    <string name="choose">Выбрать набор</string>
 
 
     <string name="find">Узнать, кто шпион</string>

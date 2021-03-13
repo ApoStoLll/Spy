@@ -36,6 +36,7 @@ class CardsFragment : Fragment(R.layout.fragment_cards) {
 //            val spy = viewModel.getSpy(params!!.players)
 //
 //        }
+        Log.e("params",params.toString())
         binding.appCompatImageButton.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -74,7 +75,7 @@ class CardsFragment : Fragment(R.layout.fragment_cards) {
                         is CardState.EndCard -> {
                             findNavController().navigate(
                                     R.id.action_cardsFragment_to_timerFragment,
-                                    TimerFragment.newInstance(params!!.time, ArrayList(spies)))
+                                    TimerFragment.newInstance(params!!.time * 1000 * 60, ArrayList(spies)))
                         }
                     }
                 }

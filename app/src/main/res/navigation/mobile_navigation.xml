@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/mobile_navigation"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
     app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.missclick.spy.ui.splash.SplashFragment"
-        android:label="SplashFragment" >
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
         <action
+            app:popUpTo = "@id/viewPagerFragment"
             android:id="@+id/action_splashFragment_to_viewPagerFragment"
             app:destination="@id/viewPagerFragment" />
     </fragment>
     <fragment
         android:id="@+id/viewPagerFragment"
         android:name="com.missclick.spy.ui.viewpager.ViewPagerFragment"
-        android:label="ViewPagerFragment" >
+        android:label="ViewPagerFragment"
+        tools:layout="@layout/fragment_view_pager">
         <action
+
             android:id="@+id/action_viewPagerFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
     </fragment>
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.missclick.spy.ui.menu.MenuFragment"
-        android:label="MenuFragment" >
+        android:label="MenuFragment"
+        tools:layout="@layout/fragment_menu">
         <action
             app:popUpTo="@id/menuFragment"
             android:id="@+id/action_menuFragment_to_cardsFragment"
@@ -35,6 +42,9 @@
             app:popUpTo="@id/menuFragment"
             android:id="@+id/action_cardsFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_setsFragment"
+            app:destination="@id/setsFragment" />
     </fragment>
     <fragment
         android:id="@+id/cardsFragment"
@@ -73,4 +83,9 @@
             android:id="@+id/action_endFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/setsFragment"
+        android:name="com.missclick.spy.ui.sets.SetsFragment"
+        android:label="SetsFragment"
+        tools:layout="@layout/fragment_sets"/>
 </navigation>
