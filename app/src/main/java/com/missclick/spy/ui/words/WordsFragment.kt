@@ -61,10 +61,18 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
             binding.textSetName.isEnabled = true
             binding.textSetName.requestFocus()
             binding.textSetName.setSelection(binding.textSetName.length())
+            val a = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            a.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
 //            (context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).
 //            hideSoftInputFromWindow(view.windowToken, 0)
 
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        val a = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        a.hideSoftInputFromWindow(view?.windowToken, 0)
     }
 
     companion object{
