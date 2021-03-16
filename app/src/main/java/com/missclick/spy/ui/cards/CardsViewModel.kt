@@ -1,10 +1,7 @@
 package com.missclick.spy.ui.cards
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.missclick.spy.data.IRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -40,6 +37,9 @@ class CardsViewModel(private val repository: IRepository) : ViewModel() {
             else cardState.value = CardState.ClosedCard(number + 1)
         }
     }
+
+
+
 }
 
 sealed class CardState(val number : Int){

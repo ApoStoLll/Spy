@@ -3,6 +3,8 @@ package com.missclick.spy.ui.cards
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.constraintlayout.motion.widget.TransitionAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
@@ -52,23 +54,23 @@ class CardsFragment : Fragment(R.layout.fragment_cards) {
                     when(it){
                         is CardState.ClosedCard ->
                             binding.apply {
-                                roleImage.visibility = View.GONE
-                                nameRole.text = it.number.toString()
-                                descriptionRole.text = getString(R.string.click_to_see_you_role)
+                                roleImageBottom.visibility = View.GONE
+                                nameRoleBottom.text = it.number.toString()
+                                descriptionRoleBottom.text = getString(R.string.click_to_see_you_role)
                             }
                         is CardState.OpenedCard -> {
                             //Log.e("Number", it.number.toString())
                             if (it.number in spies)
                                 binding.apply {
-                                    roleImage.setImageResource(R.drawable.ic_spy_hat)
-                                    nameRole.text = getString(R.string.you_spy)
-                                    descriptionRole.text = getString(R.string.you_spy_hint)
+                                    roleImageBottom.setImageResource(R.drawable.ic_spy_hat)
+                                    nameRoleBottom.text = getString(R.string.you_spy)
+                                    descriptionRoleBottom.text = getString(R.string.you_spy_hint)
                                 }
                             else
                                 binding.apply {
-                                    roleImage.setImageResource(R.drawable.ic_member_location)
-                                    nameRole.text = role
-                                    descriptionRole.text = getString(R.string.you_member)
+                                    roleImageBottom.setImageResource(R.drawable.ic_member_location)
+                                    nameRoleBottom.text = role
+                                    descriptionRoleBottom.text = getString(R.string.you_member)
                                 }
                             binding.roleImage.visibility = View.VISIBLE
                         }
@@ -81,16 +83,31 @@ class CardsFragment : Fragment(R.layout.fragment_cards) {
                 }
             }
             binding.cardView.setOnClickListener{
+                binding.motionLayout.transitionToState(R.id.like)
+                Log.e("Click", "C")
                 viewModel.changeState(params!!.players)
             }
         }
+        binding.motionLayout.setTransitionListener(object : TransitionAdapter(){
+//            override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
+//                when(currentId){
+//                    R.id.offScreenLike -> {
+//                        motionLayout!!.progress = 0f
+////                        binding.roleImage.setImageDrawable(binding.roleImageBottom.drawable)
+////                        binding.nameRole.text = binding.nameRoleBottom.text
+////                        binding.descriptionRole.text = binding.descriptionRoleBottom.text
+//                        //motionLayout.transitionToState(R.id.rest)
+//                        motionLayout!!.setTransition(R.id.rest, R.id.like)
+//                    }
+//                }
+//            }
+        })
     }
 
 
     companion object{
         fun newInstance(params: GameParams) =
                 Bundle().apply {
-
                         putSerializable(PARAMS_ARG, params)
                     }
 
