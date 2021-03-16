@@ -23,7 +23,6 @@
         android:id="@+id/motion_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:motionDebug="SHOW_ALL"
         app:layoutDescription="@xml/fragment_cards_scene"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
