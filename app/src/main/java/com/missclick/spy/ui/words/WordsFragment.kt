@@ -33,14 +33,16 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.textSetName.text = setName
+        val adapter =  WordsListAdapter(){
+
+        }
         viewModel.getWords(setName!!).observe(viewLifecycleOwner){ it ->
             //val mutableItems = mutableListOf<String>().apply { addAll(it) }
             val words = it.map {
                 WordListModel(word = it)
             }.toMutableList()
-            binding.recycleWords.adapter = WordsListAdapter(words){
-
-            }
+            adapter.setData(words)
+            binding.recycleWords.adapter = adapter
             binding.recycleWords.layoutManager = LinearLayoutManager(requireActivity())
         }
         binding.appCompatImageButton.setOnClickListener {
@@ -48,6 +50,9 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
         }
         binding.appCompatImageButton1.setOnClickListener {
             findNavController().navigateUp()
+        }
+        binding.materialButton.setOnClickListener {
+            val data = adapter.getList()
         }
     }
 

@@ -14,14 +14,20 @@ import com.missclick.spy.databinding.CollectionsListItemBinding
 import com.missclick.spy.databinding.WordsListItemsBinding
 
 class WordsListAdapter (
-        private val items : MutableList<WordListModel>,
         private val onClickListener : (CollectionsModel) -> Unit
 ) : RecyclerView.Adapter<WordsListAdapter.WordsViewHolder>(){
+
+    private val items = mutableListOf<WordListModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordsViewHolder =
             WordsViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.words_list_items, parent, false))
 
     override fun getItemCount(): Int = items.size
+
+    fun setData(newList : List<WordListModel>){
+        items.clear()
+        items.addAll(newList)
+    }
 
     fun updateWordListItems(newItems : List<WordListModel>){
         val diffUtilCallback = DiffUtilWordsCallback(oldWordList = items, newWordList = newItems)
@@ -30,6 +36,8 @@ class WordsListAdapter (
         items.addAll(newItems)
         diffRes.dispatchUpdatesTo(this)
     }
+
+    fun getList() = mutableListOf<WordListModel>().apply { addAll(items) }
 
     override fun onBindViewHolder(holder: WordsViewHolder, position: Int) {
         holder.bind(items[position])

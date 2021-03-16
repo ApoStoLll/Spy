@@ -6,6 +6,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.transition.MaterialFadeThrough
@@ -25,6 +26,7 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         enterTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ true)
         returnTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ false)
         exitTransition = MaterialFadeThrough()
+
        // exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ true)
     }
 
