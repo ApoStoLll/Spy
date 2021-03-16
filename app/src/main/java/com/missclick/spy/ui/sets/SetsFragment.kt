@@ -30,5 +30,11 @@ class SetsFragment : Fragment(R.layout.fragment_sets) {
             }
             binding.recycleSets.layoutManager = LinearLayoutManager(requireActivity())
         }
+        binding.appCompatImageButton.setOnClickListener {
+            findNavController().navigateUp()
+        }
+        binding.appCompatImageButton1.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 }
