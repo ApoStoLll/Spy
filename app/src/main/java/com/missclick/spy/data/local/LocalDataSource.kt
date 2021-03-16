@@ -16,4 +16,12 @@ class LocalDataSource(private val wordsDB: WordsDB) : ILocalDataSource{
         return wordsDB.dao().getSets()
     }
 
+    override suspend fun removeWordsInCategory(category: String) {
+        wordsDB.dao().removeAllCategory(category)
+    }
+
+    override suspend fun removeWord(word: WordEntitity) {
+        wordsDB.dao().remove(word)
+    }
+
 }

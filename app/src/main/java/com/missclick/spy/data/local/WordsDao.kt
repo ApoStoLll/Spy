@@ -25,4 +25,7 @@ interface WordsDao{
 
     @Query("SELECT category FROM db")
     fun getSets() : List<String>
+
+    @Query("DELETE FROM db WHERE category = :category")
+    fun removeAllCategory(category: String)
 }

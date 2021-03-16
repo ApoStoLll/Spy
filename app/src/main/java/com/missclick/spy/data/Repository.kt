@@ -29,6 +29,18 @@ class Repository(private val localDataSource: ILocalDataSource) : IRepository {
         return localDataSource.getSets().toSet().toList()
     }
 
+    override suspend fun removeWordInCategory(category: String) {
+        localDataSource.removeWordsInCategory(category)
+    }
+
+    override suspend fun removeWord(wordsModel: WordsModel) {
+        localDataSource.removeWord(
+                WordEntitity(
+                        word = wordsModel.word,
+                        category = wordsModel.category
+                )
+        )
+    }
 
 
 }
