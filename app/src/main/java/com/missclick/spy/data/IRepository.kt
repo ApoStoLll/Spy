@@ -5,4 +5,5 @@ import com.missclick.spy.data.models.WordModel
 interface IRepository {
     suspend fun getWordsFromCategoryByName(nameOfCategory : String) : List<String>
     suspend fun insertWord(wordModel : WordModel) : Long
+    suspend fun getSets() : List<String>
 }

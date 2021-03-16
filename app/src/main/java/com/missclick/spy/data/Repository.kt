@@ -15,16 +15,19 @@ class Repository(private val localDataSource: ILocalDataSource) : IRepository {
 
     override suspend fun insertWord(wordModel: WordModel): Long {
 
-        val a =  localDataSource.addWord(
+        val id =  localDataSource.addWord(
             WordEntitity(
                 word = wordModel.word,
                 category = wordModel.category
             )
         )
-        Log.e("Repository", a.toString())
-        return a
+        Log.e("Repository", id.toString())
+        return id
     }
 
+    override suspend fun getSets(): List<String> {
+        return localDataSource.getSets()
+    }
 
 
 }

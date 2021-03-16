@@ -22,4 +22,7 @@ interface WordsDao{
 
     @Query("SELECT * FROM db WHERE category = :category")
     fun getWordsByCategory(category : String) : List<WordEntitity>
+
+    @Query("SELECT category FROM db")
+    fun getSets() : List<String>
 }

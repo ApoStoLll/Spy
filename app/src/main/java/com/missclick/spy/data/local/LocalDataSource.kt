@@ -12,4 +12,8 @@ class LocalDataSource(private val wordsDB: WordsDB) : ILocalDataSource{
         return wordsDB.dao().getWordsByCategory(category = category)
     }
 
+    override suspend fun getSets(): List<String> {
+        return wordsDB.dao().getSets()
+    }
+
 }

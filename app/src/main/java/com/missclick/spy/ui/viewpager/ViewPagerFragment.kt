@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -18,6 +19,7 @@ import com.missclick.spy.adapters.ViewPagerAdapter
 import com.missclick.spy.databinding.FragmentGuideBinding
 import com.missclick.spy.databinding.FragmentSplashBinding
 import com.missclick.spy.databinding.FragmentViewPagerBinding
+import org.koin.android.ext.android.bind
 
 class ViewPagerFragment : Fragment(R.layout.fragment_view_pager){
 
@@ -34,16 +36,14 @@ class ViewPagerFragment : Fragment(R.layout.fragment_view_pager){
 //        binding.tabDots.setupWithViewPager(binding.viewPager)
         TabLayoutMediator( binding.tabDots, binding.viewPager) { tab, position ->
             binding.viewPager.setCurrentItem(tab.position, true)
-
-
         }.attach()
-//        binding.viewPager.setOnTouchListener { v, event ->
-//            Log.e("pos",binding.viewPager.currentItem.toString())
-//            if (binding.viewPager.currentItem == 4) binding.btnNext.text = getString(R.string.next)
-//            else
-//                binding.btnNext.text = getString(R.string.skip)
-//            true
-//        }
+        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                if(position == 4) binding.btnNext.text = getString(R.string.next)
+                else binding.btnNext.text = getString(R.string.skip)
+            }
+        })
 
     }
 }
