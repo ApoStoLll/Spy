@@ -37,7 +37,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash){
     private fun getWordsFromStringArray() : List<WordsModel>{
         val words = resources.getStringArray(R.array.Basic)
         return words.map {
-            WordsModel(it, "Basic")
+            WordsModel(word = it, category = getString(R.string.Basic))
         }
     }
 }
