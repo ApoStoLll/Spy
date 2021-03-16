@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.missclick.spy.R
+import com.missclick.spy.adapters.diff.DiffUtilCollectionsCallback
 import com.missclick.spy.data.models.CollectionsModel
 import com.missclick.spy.databinding.CollectionsListItemBinding
 
@@ -21,7 +22,7 @@ class CollectionsListAdapter (
     override fun getItemCount(): Int = items.size
 
     fun updateWordListItems(newItems : List<CollectionsModel>){
-        val diffUtilCallback = DiffUtilCallback(oldWordList = items, newWordList = newItems)
+        val diffUtilCallback = DiffUtilCollectionsCallback(oldWordList = items, newWordList = newItems)
         val diffRes = DiffUtil.calculateDiff(diffUtilCallback)
         items.clear()
         items.addAll(newItems)
@@ -29,7 +30,11 @@ class CollectionsListAdapter (
     }
 
     override fun onBindViewHolder(holder: CollectionViewHolder, position: Int) {
-        holder.bind(items[position])
+        val item = items[position]
+        holder.bind(item)
+        holder.itemView.setOnClickListener {
+            onClickListener.invoke(item)
+        }
     }
 
     class CollectionViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
