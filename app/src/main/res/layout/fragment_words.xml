@@ -39,14 +39,19 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.cardview.widget.CardView>
 
-    <com.google.android.material.textview.MaterialTextView
+    <com.google.android.material.textfield.TextInputEditText
+        android:enabled="false"
         android:id="@+id/text_set_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:textSize="26sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="8dp"
+        android:maxLength="10"
         android:textColor="@color/white"
+        android:textSize="26sp"
+        android:backgroundTint="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toStartOf="@+id/shapeableImageView2"
         app:layout_constraintStart_toEndOf="@+id/appCompatImageButton"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,16 +59,17 @@
         android:id="@+id/image_garbage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="26dp"
+        android:layout_marginEnd="24dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_garbage" />
 
     <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image_pen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="26dp"
+        android:layout_marginEnd="24dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toStartOf="@+id/image_garbage"
         app:layout_constraintTop_toTopOf="parent"
@@ -72,7 +78,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle_words"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/materialButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,20 +1,23 @@
 package com.missclick.spy.ui.words
 
+import android.content.Context
+import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.missclick.spy.R
-import com.missclick.spy.adapters.CollectionsListAdapter
 import com.missclick.spy.adapters.WordsListAdapter
-import com.missclick.spy.data.models.CollectionsModel
 import com.missclick.spy.data.models.WordListModel
 import com.missclick.spy.databinding.FragmentWordsBinding
-import com.missclick.spy.ui.sets.SetsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 const val SET = "name"
 class WordsFragment : Fragment(R.layout.fragment_words) {
@@ -32,7 +35,7 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.textSetName.text = setName
+        binding.textSetName.setText(setName)
         val adapter =  WordsListAdapter(){
 
         }
@@ -54,12 +57,20 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
         binding.materialButton.setOnClickListener {
             val data = adapter.getList()
         }
+        binding.imagePen.setOnClickListener {
+            binding.textSetName.isEnabled = true
+            binding.textSetName.requestFocus()
+            binding.textSetName.setSelection(binding.textSetName.length())
+//            (context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).
+//            hideSoftInputFromWindow(view.windowToken, 0)
+
+        }
     }
 
     companion object{
-        fun newInstance(setName : String) =
+        fun newInstance(setName: String) =
                 Bundle().apply {
-                    putString(SET,setName)
+                    putString(SET, setName)
                 }
     }
 }
