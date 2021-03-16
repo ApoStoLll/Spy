@@ -30,8 +30,8 @@
     <string name="rus">Русский</string>
     <string name="ukr">Українська</string>
 
-    <string name="Basic">Базовый</string>
-    <string-array name="Basic">
+    <string name="basic">Базовый</string>
+    <string-array name="basic">
         <item>Цирк(Если ты не волк)</item>
         <item>Парк</item>
         <item>Магазин</item>
