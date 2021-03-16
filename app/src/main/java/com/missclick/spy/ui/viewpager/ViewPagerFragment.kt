@@ -14,6 +14,7 @@ import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.android.material.transition.MaterialSharedAxis
 import com.missclick.spy.R
 import com.missclick.spy.adapters.ViewPagerAdapter
 import com.missclick.spy.databinding.FragmentGuideBinding
@@ -24,6 +25,12 @@ import org.koin.android.ext.android.bind
 class ViewPagerFragment : Fragment(R.layout.fragment_view_pager){
 
     private val binding by viewBinding(FragmentViewPagerBinding::bind)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ true)
+        reenterTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ false)
+    }
 
     @SuppressLint("ClickableViewAccessibility")
     @RequiresApi(Build.VERSION_CODES.M)

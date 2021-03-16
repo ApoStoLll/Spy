@@ -6,6 +6,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.transition.MaterialFadeThrough
 import com.missclick.spy.MainActivity
 import com.missclick.spy.R
 import com.missclick.spy.data.local.SettingsRepository
@@ -15,6 +16,11 @@ import org.koin.android.ext.android.inject
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
     private val binding by viewBinding(FragmentSettingsBinding::bind)
     private val settingsRepository : SettingsRepository by inject()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enterTransition = MaterialFadeThrough()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.transition.MaterialSharedAxis
 import com.missclick.spy.R
 import com.missclick.spy.data.models.GameParams
 import com.missclick.spy.databinding.FragmentCardsBinding
@@ -27,6 +28,8 @@ class CardsFragment : Fragment(R.layout.fragment_cards) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ true)
+        returnTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ false)
         arguments?.let {
             params = it.getSerializable(PARAMS_ARG) as GameParams
         }

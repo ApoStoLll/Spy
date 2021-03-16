@@ -8,6 +8,8 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.transition.MaterialFadeThrough
+import com.google.android.material.transition.MaterialSharedAxis
 import com.missclick.spy.R
 import com.missclick.spy.data.models.GameParams
 import com.missclick.spy.databinding.FragmentMenuBinding
@@ -17,6 +19,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MenuFragment : Fragment(R.layout.fragment_menu) {
     private val viewModel : MenuViewModel by viewModel()
     private val binding by viewBinding(FragmentMenuBinding::bind)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ true)
+        returnTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ false)
+        exitTransition = MaterialFadeThrough()
+       // exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ true)
+    }
 
 
     @SuppressLint("ResourceType", "UseCompatLoadingForDrawables")
