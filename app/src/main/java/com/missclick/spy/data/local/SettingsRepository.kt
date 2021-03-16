@@ -1,9 +1,11 @@
 package com.missclick.spy.data.local
 
 import android.content.Context
+import android.provider.Settings.Global.getString
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.createDataStore
+import com.missclick.spy.R
 import com.missclick.spy.data.local.SettingsRepository.Companion.FIRST_LAUNCH
 import com.missclick.spy.ui.splash.SplashViewModel
 import kotlinx.coroutines.flow.Flow
@@ -38,7 +40,7 @@ class SettingsRepository(private val context: Context) {
 
     val set : Flow<String>
         get() = dataStore.data.map {
-            return@map it[SET] ?: "Basic"
+            return@map it[SET] ?: "basic"
         }
 
     suspend fun setPlayers(players : Int){
