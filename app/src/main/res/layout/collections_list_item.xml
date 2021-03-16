@@ -26,4 +26,11 @@
 
         />
 
+    <com.google.android.material.imageview.ShapeableImageView
+        app:srcCompat="@drawable/ic_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        />
+
 </com.google.android.material.card.MaterialCardView>

@@ -8,7 +8,7 @@
     app:cardBackgroundColor="@android:color/transparent"
     app:cardElevation="0dp">
 
-    <com.google.android.material.textview.MaterialTextView
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/text_word"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,12 +18,19 @@
         android:layout_marginLeft="32dp"/>
 
     <com.google.android.material.imageview.ShapeableImageView
-        app:srcCompat="@drawable/ic_point_transperent"
+        app:srcCompat="@drawable/ic_garbage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|right"
         android:layout_marginRight="24dp"
 
+        />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        app:srcCompat="@drawable/ic_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         />
 
 </com.google.android.material.card.MaterialCardView>

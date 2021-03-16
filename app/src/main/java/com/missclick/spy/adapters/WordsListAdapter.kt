@@ -38,7 +38,7 @@ class WordsListAdapter (
     class WordsViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         private val binding by viewBinding(WordsListItemsBinding::bind)
         fun bind(item : WordListModel){
-            binding.textWord.text = item.word
+            binding.textWord.setText(item.word)
         }
     }
 }
