@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
+import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.missclick.spy.R
+import com.missclick.spy.adapters.CollectionsListAdapter
+import com.missclick.spy.data.models.CollectionsModel
 import com.missclick.spy.databinding.FragmentSetsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -16,7 +19,14 @@ class SetsFragment : Fragment(R.layout.fragment_sets) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getSets().observe(viewLifecycleOwner){
-
+            //val mutableItems = mutableListOf<String>().apply { addAll(it) }
+            val collections = it.map {
+                CollectionsModel(name = it)
+            }.toMutableList()
+            binding.recycleSets.adapter = CollectionsListAdapter(collections){
+                //todo on click Listener
+            }
+            binding.recycleSets.layoutManager = LinearLayoutManager(requireActivity())
         }
     }
 }

@@ -1,11 +1,11 @@
 package com.missclick.spy.adapters
 
 import androidx.recyclerview.widget.DiffUtil
-import com.missclick.spy.data.models.WordListModel
+import com.missclick.spy.data.models.CollectionsModel
 
 class DiffUtilCallback(
-        private val oldWordList : List<WordListModel>,
-        private val newWordList : List<WordListModel>
+        private val oldWordList : List<CollectionsModel>,
+        private val newWordList : List<CollectionsModel>
 ) : DiffUtil.Callback() {
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
@@ -21,6 +21,6 @@ class DiffUtilCallback(
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldWordList[oldItemPosition].word == newWordList[newItemPosition].word
+        return oldWordList[oldItemPosition].name == newWordList[newItemPosition].name
     }
 }

@@ -9,9 +9,8 @@ import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.missclick.spy.R
-import com.missclick.spy.data.models.WordModel
+import com.missclick.spy.data.models.WordsModel
 import com.missclick.spy.databinding.FragmentSplashBinding
-import com.missclick.spy.ui.menu.MenuViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SplashFragment : Fragment(R.layout.fragment_splash){
@@ -35,10 +34,10 @@ class SplashFragment : Fragment(R.layout.fragment_splash){
 
     }
 
-    private fun getWordsFromStringArray() : List<WordModel>{
+    private fun getWordsFromStringArray() : List<WordsModel>{
         val words = resources.getStringArray(R.array.Basic)
         return words.map {
-            WordModel(it, "Basic")
+            WordsModel(it, "Basic")
         }
     }
 }

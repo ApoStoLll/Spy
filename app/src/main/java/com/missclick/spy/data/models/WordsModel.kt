@@ -1,6 +1,6 @@
 package com.missclick.spy.data.models
 
-data class WordModel(
+data class WordsModel(
         val word : String,
         val category : String
 )

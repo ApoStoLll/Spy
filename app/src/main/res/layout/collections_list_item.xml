@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="64dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:cardBackgroundColor="@android:color/transparent"
-    android:cardElevation="0dp">
+    app:cardBackgroundColor="@android:color/transparent"
+   app:cardElevation="0dp">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_collection"
