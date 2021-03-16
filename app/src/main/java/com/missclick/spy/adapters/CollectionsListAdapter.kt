@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.missclick.spy.R
 import com.missclick.spy.data.models.WordListModel
 
-class WordListAdapter (
+class CollectionsListAdapter (
         private val items : MutableList<WordListModel>,
         private val onClickListener : (WordListModel) -> Unit
-) : RecyclerView.Adapter<WordListAdapter.WordViewHolder>(){
+) : RecyclerView.Adapter<CollectionsListAdapter.WordViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder =
-            WordViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.word_list_item, parent, false))
+            WordViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.collections_list_item, parent, false))
 
     override fun getItemCount(): Int = items.size
 
