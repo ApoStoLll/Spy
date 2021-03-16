@@ -25,7 +25,7 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         var players = 4
         var spies = 1
         var time = 3
-        var set = "Basic"
+        var set = getString(R.string.basic)
         //todo default from dataStore
 //        viewModel.players.asLiveData().observe(viewLifecycleOwner){
 //            players = it
