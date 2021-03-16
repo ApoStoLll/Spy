@@ -12,7 +12,7 @@ class SetsViewModel(
 
     fun getSets() = liveData<List<String>>(Dispatchers.IO) {
         try {
-            emit(repository.getSets().toSet().toList())
+            emit(repository.getSets())
         } catch (e : Exception){
             e.printStackTrace()
         }

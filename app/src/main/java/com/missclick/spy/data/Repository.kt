@@ -26,7 +26,7 @@ class Repository(private val localDataSource: ILocalDataSource) : IRepository {
     }
 
     override suspend fun getSets(): List<String> {
-        return localDataSource.getSets()
+        return localDataSource.getSets().toSet().toList()
     }
 
 
