@@ -43,7 +43,6 @@ class WordsListAdapter(
 
     override fun onBindViewHolder(holder: WordsViewHolder, position: Int) {
         holder.bind(items[position])
-        holder.remove(items[position])
 
     }
 
@@ -55,8 +54,6 @@ class WordsListAdapter(
         private val binding by viewBinding(WordsListItemsBinding::bind)
         fun bind(item : WordListModel){
             binding.textWord.setText(item.word)
-        }
-        fun remove(item : WordListModel){
             binding.imageGarbage.setOnClickListener {
                 onClickListener?.invoke(item)
             }

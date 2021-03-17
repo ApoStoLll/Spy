@@ -80,6 +80,7 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
         a.hideSoftInputFromWindow(view?.windowToken, 0)
     }
 
+
     companion object{
         fun newInstance(setName: String) =
                 Bundle().apply {
