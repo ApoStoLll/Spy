@@ -1,5 +1,8 @@
 package com.missclick.spy.data.models
 
+import android.text.Editable
+
 data class WordListModel(
-        val word : String
+        var word : String,
+        val editable: Boolean = false
 )

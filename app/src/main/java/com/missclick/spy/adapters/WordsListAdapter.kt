@@ -54,7 +54,10 @@ class WordsListAdapter(
         private val binding by viewBinding(WordsListItemsBinding::bind)
         fun bind(item : WordListModel){
             binding.textWord.setText(item.word)
+            binding.textWord.isEnabled = item.editable
+            binding.textWord.requestFocus()
             binding.imageGarbage.setOnClickListener {
+                item.word = binding.textWord.text.toString()
                 onClickListener?.invoke(item)
             }
         }

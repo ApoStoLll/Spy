@@ -37,17 +37,33 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
         val adapter =  WordsListAdapter()
         viewModel.getWords(setName!!).observe(viewLifecycleOwner){ it ->
             //val mutableItems = mutableListOf<String>().apply { addAll(it) }
-            val words = it.map {
+            var words = it.map {
                 WordListModel(word = it)
             }.toMutableList()
-            Log.e("word",words.toString())
+
             adapter.setData(words)
             adapter.setOnClickListener {
-                words.remove(it)
-                adapter.updateWordListItems(words)
+                if(it.editable){
+                    Log.e("word",words.toString())
+                    val word = WordListModel(word = words.last().word)
+                    words.remove(words.last())
+                    words.add(word)
+                    adapter.updateWordListItems(words)
+                    Log.e("word",words.toString())
+                }
+                else{
+                    words.remove(it)
+                    adapter.updateWordListItems(words)
+                }
             }
             binding.recycleWords.adapter = adapter
             binding.recycleWords.layoutManager = LinearLayoutManager(requireActivity())
+            binding.imageGarbage.setOnClickListener {
+                words.add(WordListModel("",true))
+                adapter.updateWordListItems(words)
+                val a = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                a.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+            }
         }
         binding.appCompatImageButton.setOnClickListener {
             findNavController().navigateUp()
@@ -72,6 +88,8 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
 //            hideSoftInputFromWindow(view.windowToken, 0)
 
         }
+
+
     }
 
     override fun onPause() {
