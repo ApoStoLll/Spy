@@ -10,14 +10,16 @@ import com.missclick.spy.R
 import com.missclick.spy.adapters.diff.DiffUtilWordsCallback
 import com.missclick.spy.data.models.CollectionsModel
 import com.missclick.spy.data.models.WordListModel
+import com.missclick.spy.data.models.WordsModel
 import com.missclick.spy.databinding.CollectionsListItemBinding
 import com.missclick.spy.databinding.WordsListItemsBinding
 
-class WordsListAdapter (
-        private val onClickListener : (CollectionsModel) -> Unit
+class WordsListAdapter(
+
 ) : RecyclerView.Adapter<WordsListAdapter.WordsViewHolder>(){
 
     private val items = mutableListOf<WordListModel>()
+    private var onClickListener : ((WordListModel) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordsViewHolder =
             WordsViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.words_list_items, parent, false))
@@ -41,12 +43,24 @@ class WordsListAdapter (
 
     override fun onBindViewHolder(holder: WordsViewHolder, position: Int) {
         holder.bind(items[position])
+        holder.remove(items[position])
+
     }
 
-    class WordsViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+    fun setOnClickListener(callback : (WordListModel) -> Unit){
+        onClickListener = callback
+    }
+
+    inner class WordsViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         private val binding by viewBinding(WordsListItemsBinding::bind)
         fun bind(item : WordListModel){
             binding.textWord.setText(item.word)
         }
+        fun remove(item : WordListModel){
+            binding.imageGarbage.setOnClickListener {
+                onClickListener?.invoke(item)
+            }
+        }
     }
+
 }

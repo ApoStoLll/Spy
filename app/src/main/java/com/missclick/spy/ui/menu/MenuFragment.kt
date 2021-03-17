@@ -39,23 +39,23 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         var time = 3
         var set = getString(R.string.basic)
         //todo default from dataStore
-//        viewModel.players.asLiveData().observe(viewLifecycleOwner){
-//            players = it
-//        }
-//        viewModel.spy.asLiveData().observe(viewLifecycleOwner){
-//            spies = it
-//        }
-//        viewModel.time.asLiveData().observe(viewLifecycleOwner){
-//            time = it
-//        }
-//        viewModel.set.asLiveData().observe(viewLifecycleOwner){
-//            set = it
-//        }
-
-        updatePlayers(players)
-        updateSpies(spies,players)
-        updateTime(time)
-        binding.textSet.text = set
+        viewModel.players.asLiveData().observe(viewLifecycleOwner){
+            players = it
+            updatePlayers(players)
+            updateSpies(spies,players)
+        }
+        viewModel.spy.asLiveData().observe(viewLifecycleOwner){
+            spies = it
+            updateSpies(spies,players)
+        }
+        viewModel.time.asLiveData().observe(viewLifecycleOwner){
+            time = it
+            updateTime(time)
+        }
+        viewModel.set.asLiveData().observe(viewLifecycleOwner){
+            set = it
+            updateSet(set)
+        }
 
         binding.imagePlayersLeft.setOnClickListener {
             if (players > 2){
@@ -160,6 +160,9 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         else
             binding.imageTimeRight.setImageDrawable(resources.getDrawable(R.drawable.ic_orange_right))
         binding.textTimer.text = time.toString() + " " + getString(R.string.min)
+    }
+    private fun updateSet(setName : String){
+        binding.textSet.text = setName
     }
 
 

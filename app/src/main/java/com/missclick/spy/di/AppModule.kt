@@ -22,6 +22,6 @@ val appModule = module {
         SetsViewModel(get())
     }
     viewModel {
-        WordsViewModel(get())
+        WordsViewModel(get(),get())
     }
 }

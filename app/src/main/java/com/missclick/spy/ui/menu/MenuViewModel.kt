@@ -8,7 +8,7 @@ import com.missclick.spy.data.local.SettingsRepository
 import com.missclick.spy.data.models.GameParams
 import kotlinx.coroutines.launch
 
-class MenuViewModel(private val repository: IRepository,private val settingsRepository: SettingsRepository) : ViewModel() {
+class MenuViewModel(private val repository: IRepository, private val settingsRepository: SettingsRepository) : ViewModel() {
 
     val players = settingsRepository.players
     val spy = settingsRepository.spies
