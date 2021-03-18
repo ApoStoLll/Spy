@@ -51,6 +51,7 @@
         android:textColor="@color/white"
         android:textSize="26sp"
         android:backgroundTint="@android:color/transparent"
+
         app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toStartOf="@+id/image_pen"
         app:layout_constraintStart_toEndOf="@+id/appCompatImageButton"

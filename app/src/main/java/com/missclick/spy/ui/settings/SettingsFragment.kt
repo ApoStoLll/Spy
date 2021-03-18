@@ -2,8 +2,11 @@ package com.missclick.spy.ui.settings
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.transition.MaterialFadeThrough
@@ -11,11 +14,13 @@ import com.missclick.spy.MainActivity
 import com.missclick.spy.R
 import com.missclick.spy.data.local.SettingsRepository
 import com.missclick.spy.databinding.FragmentSettingsBinding
+import com.missclick.spy.ui.menu.MenuViewModel
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
     private val binding by viewBinding(FragmentSettingsBinding::bind)
-    private val settingsRepository : SettingsRepository by inject()
+    private val viewModel : SettingsViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,24 +29,23 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        changeColor((activity as MainActivity).language,true)
+
+        viewModel.language.asLiveData().observe(viewLifecycleOwner){
+            updateColor(it)
+            Log.e("upd",it)
+        }
+
         //todo instead of activity as MainActivity - settingsRepository
         binding.cardViewEng.setOnClickListener {
-            changeColor((activity as MainActivity).language,false)
-            (activity as MainActivity).language = "eng"
-            changeColor((activity as MainActivity).language,true)
+            viewModel.setLanguage("eng")
         }
 
         binding.cardViewRus.setOnClickListener {
-            changeColor((activity as MainActivity).language,false)
-            (activity as MainActivity).language = "rus"
-            changeColor((activity as MainActivity).language,true)
+            viewModel.setLanguage("rus")
         }
 
         binding.cardViewUkr.setOnClickListener {
-            changeColor((activity as MainActivity).language,false)
-            (activity as MainActivity).language = "ukr"
-            changeColor((activity as MainActivity).language,true)
+            viewModel.setLanguage("ukr")
         }
 
         binding.appCompatImageButton.setOnClickListener {
@@ -53,12 +57,16 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     }
 
+    private fun updateColor(lang : String){
+        val white = R.color.white
+        binding.textRus.setTextColor(resources.getColor(white))
+        binding.textEng.setTextColor(resources.getColor(white))
+        binding.textUkr.setTextColor(resources.getColor(white))
+        val orange = R.color.orange
+        if (lang == "rus") binding.textRus.setTextColor(resources.getColor(orange))
+        if (lang == "eng") binding.textEng.setTextColor(resources.getColor(orange))
+        if (lang == "ukr") binding.textUkr.setTextColor(resources.getColor(orange))
 
-    private fun changeColor(lang : String, orange : Boolean){
-        var color = R.color.white
-        if(orange) color = R.color.orange
-        if (lang == "rus") binding.textRus.setTextColor(resources.getColor(color))
-        if (lang == "eng") binding.textEng.setTextColor(resources.getColor(color))
-        if (lang == "ukr") binding.textUkr.setTextColor(resources.getColor(color))
     }
+
 }

@@ -1,6 +1,7 @@
 package com.missclick.spy.ui.words
 
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -15,6 +16,7 @@ import com.missclick.spy.data.models.WordListModel
 import com.missclick.spy.databinding.FragmentWordsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import android.util.Log
+import androidx.annotation.RequiresApi
 
 
 const val SET = "name"
@@ -35,8 +37,9 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
         super.onViewCreated(view, savedInstanceState)
         binding.textSetName.setText(setName)
         val adapter =  WordsListAdapter()
+        var add = true
+        var edit = false
         viewModel.getWords(setName!!).observe(viewLifecycleOwner){ it ->
-            //val mutableItems = mutableListOf<String>().apply { addAll(it) }
             var words = it.map {
                 WordListModel(word = it)
             }.toMutableList()
@@ -50,19 +53,53 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
                     words.add(word)
                     adapter.updateWordListItems(words)
                     Log.e("word",words.toString())
+                    add = true
+                    (context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).
+                    hideSoftInputFromWindow(view.windowToken, 0)
+                    viewModel.addWords(words = listOf(word),category = binding.textSetName.text.toString())
                 }
                 else{
                     words.remove(it)
                     adapter.updateWordListItems(words)
+                    viewModel.removeWord(word = it,category = binding.textSetName.text.toString())
                 }
             }
             binding.recycleWords.adapter = adapter
             binding.recycleWords.layoutManager = LinearLayoutManager(requireActivity())
             binding.imageGarbage.setOnClickListener {
-                words.add(WordListModel("",true))
-                adapter.updateWordListItems(words)
-                val a = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                a.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+                if(add){
+                    edit = false
+                    binding.textSetName.isEnabled = false
+                    add = false
+                    words.add(WordListModel("",true))
+                    adapter.updateWordListItems(words)
+                    val a = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    a.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+                }
+            }
+
+            binding.imagePen.setOnClickListener {
+                if(edit){
+                    edit = false
+                    binding.textSetName.isEnabled = false
+                    (context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).
+                    hideSoftInputFromWindow(view.windowToken, 0)
+                }
+                else{
+                    edit = true
+                    if(words.last().editable){
+                        add = true
+                        words.remove(words.last())
+                        adapter.updateWordListItems(words)
+                    }
+                    binding.textSetName.isEnabled = true
+                    binding.textSetName.requestFocus()
+                    binding.textSetName.setSelection(binding.textSetName.length())
+                    val a = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    a.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+                }
+
+
             }
         }
         binding.appCompatImageButton.setOnClickListener {
@@ -75,19 +112,10 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
             val data = adapter.getList()
             val oldName = setName!!
             val newName = binding.textSetName.text.toString()
-            viewModel.update(oldSetName = oldName,newSetName = newName,data = data)
+            //viewModel.update(oldSetName = oldName,newSetName = newName,data = data)
             findNavController().navigate(R.id.action_wordsFragment_to_menuFragment)
         }
-        binding.imagePen.setOnClickListener {
-            binding.textSetName.isEnabled = true
-            binding.textSetName.requestFocus()
-            binding.textSetName.setSelection(binding.textSetName.length())
-            val a = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            a.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
-//            (context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).
-//            hideSoftInputFromWindow(view.windowToken, 0)
 
-        }
 
 
     }

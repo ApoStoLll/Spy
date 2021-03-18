@@ -36,7 +36,7 @@ class WordsViewModel(
         addWords(data,newSetName)
     }
 
-    private fun addWords(words : List<WordListModel>, category : String){
+    fun addWords(words : List<WordListModel>, category : String){
         viewModelScope.launch(Dispatchers.IO) {
             words.map {
                 async { repository.insertWord(WordsModel(word = it.word, category = category)) }
@@ -44,7 +44,7 @@ class WordsViewModel(
         }
     }
 
-    private fun removeWordsInCategory(category: String){
+    fun removeWordsInCategory(category: String){
         viewModelScope.launch(Dispatchers.IO) {
             repository.removeWordInCategory(category)
         }

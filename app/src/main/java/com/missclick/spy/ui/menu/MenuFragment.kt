@@ -54,6 +54,8 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         }
         viewModel.set.asLiveData().observe(viewLifecycleOwner){
             set = it
+            if(set == "basic")
+                set = getString(R.string.basic)
             updateSet(set)
         }
 
