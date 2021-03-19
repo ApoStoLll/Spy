@@ -1,5 +1,6 @@
 package com.missclick.spy.data.local
 
+import android.util.Log
 import com.missclick.spy.data.local.ILocalDataSource
 import com.missclick.spy.data.local.WordsDB
 import com.missclick.spy.data.local.entities.WordEntitity
@@ -22,6 +23,7 @@ class LocalDataSource(private val wordsDB: WordsDB) : ILocalDataSource{
 
     override suspend fun removeWord(word: WordEntitity) {
         wordsDB.dao().remove(word)
+        Log.e(word.word,word.category)
     }
 
 }

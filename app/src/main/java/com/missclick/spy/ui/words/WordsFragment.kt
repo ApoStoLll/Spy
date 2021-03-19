@@ -74,6 +74,7 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
                 else{
                     words.remove(it)
                     adapter.updateWordListItems(words)
+                    Log.e(binding.textSetName.text.toString(),it.word)
                     viewModel.removeWord(word = it,category = binding.textSetName.text.toString())
                 }
             }
@@ -86,6 +87,8 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
                     add = false
                     binding.imagePen.setImageResource(R.drawable.ic_pen)
                     Log.e("words",words.toString())
+                    if(binding.textSetName.text.toString() == "")
+                        binding.textSetName.setText(getString(R.string.new_set))
                     viewModel.updateSetName(oldSetName = setName!!,newSetName = binding.textSetName.text.toString(),data = words.toList())
                     words.add(WordListModel("",true))
                     adapter.updateWordListItems(words)
@@ -98,6 +101,8 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
                 if(edit){
                     binding.imagePen.setImageResource(R.drawable.ic_pen)
                     edit = false
+                    if(binding.textSetName.text.toString() == "")
+                        binding.textSetName.setText(getString(R.string.new_set))
                     viewModel.updateSetName(oldSetName = setName!!,newSetName = binding.textSetName.text.toString(),data = words)
                     binding.textSetName.isEnabled = false
                     setName = binding.textSetName.text.toString()
@@ -122,6 +127,12 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
 
             }
         }
+        binding.imageGarbage.setOnClickListener {
+            viewModel.removeWordsInCategory(category = setName!!)
+            findNavController().navigateUp()
+            val a = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            a.hideSoftInputFromWindow(view?.windowToken, 0)
+        }
         binding.appCompatImageButton.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -133,7 +144,6 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
             val oldName = setName!!
             val newName = binding.textSetName.text.toString()
             if(data.size != 0){
-                viewModel.updateSetName(oldSetName = oldName,newSetName = newName,data = data)
                 viewModel.chooseSet(newName)
                 findNavController().navigate(R.id.action_wordsFragment_to_menuFragment)
             }
