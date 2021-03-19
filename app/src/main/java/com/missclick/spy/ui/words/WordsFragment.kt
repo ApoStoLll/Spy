@@ -20,16 +20,20 @@ import androidx.annotation.RequiresApi
 
 
 const val SET = "name"
+const val NEW = "new"
+
 class WordsFragment : Fragment(R.layout.fragment_words) {
     val binding by viewBinding(FragmentWordsBinding::bind)
     private val viewModel : WordsViewModel by viewModel()
 
     var setName : String? = null
+    var newSet : Boolean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.apply {
             setName = getString(SET)
+            newSet = getBoolean(NEW)
         }
     }
 
@@ -39,6 +43,15 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
         val adapter =  WordsListAdapter()
         var add = true
         var edit = false
+        if(newSet!!){
+            binding.imagePen.setImageResource(R.drawable.ic_save)
+            edit = true
+            binding.textSetName.isEnabled = true
+            binding.textSetName.requestFocus()
+            binding.textSetName.setSelection(binding.textSetName.length())
+            val a = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            a.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+        }
         viewModel.getWords(setName!!).observe(viewLifecycleOwner){ it ->
             var words = it.map {
                 WordListModel(word = it)
@@ -47,16 +60,16 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
             adapter.setData(words)
             adapter.setOnClickListener {
                 if(it.editable){
-                    Log.e("word",words.toString())
                     val word = WordListModel(word = words.last().word)
                     words.remove(words.last())
-                    words.add(word)
+                    if(word.word != ""){
+                        words.add(word)
+                        viewModel.addWords(words = listOf(word),category = binding.textSetName.text.toString())
+                    }
                     adapter.updateWordListItems(words)
-                    Log.e("word",words.toString())
                     add = true
                     (context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).
                     hideSoftInputFromWindow(view.windowToken, 0)
-                    viewModel.addWords(words = listOf(word),category = binding.textSetName.text.toString())
                 }
                 else{
                     words.remove(it)
@@ -66,11 +79,13 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
             }
             binding.recycleWords.adapter = adapter
             binding.recycleWords.layoutManager = LinearLayoutManager(requireActivity())
-            binding.imageGarbage.setOnClickListener {
+            binding.cardAdd.setOnClickListener {
                 if(add){
                     edit = false
                     binding.textSetName.isEnabled = false
                     add = false
+                    binding.imagePen.setImageResource(R.drawable.ic_pen)
+                    viewModel.updateSetName(oldSetName = setName!!,newSetName = binding.textSetName.text.toString(),data = words)
                     words.add(WordListModel("",true))
                     adapter.updateWordListItems(words)
                     val a = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -80,12 +95,15 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
 
             binding.imagePen.setOnClickListener {
                 if(edit){
+                    binding.imagePen.setImageResource(R.drawable.ic_pen)
                     edit = false
+                    viewModel.updateSetName(oldSetName = setName!!,newSetName = binding.textSetName.text.toString(),data = words)
                     binding.textSetName.isEnabled = false
                     (context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).
                     hideSoftInputFromWindow(view.windowToken, 0)
                 }
                 else{
+                    binding.imagePen.setImageResource(R.drawable.ic_save)
                     edit = true
                     if(words.last().editable){
                         add = true
@@ -112,13 +130,13 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
             val data = adapter.getList()
             val oldName = setName!!
             val newName = binding.textSetName.text.toString()
-            //viewModel.update(oldSetName = oldName,newSetName = newName,data = data)
+            viewModel.updateSetName(oldSetName = oldName,newSetName = newName,data = data)
+            viewModel.chooseSet(newName)
             findNavController().navigate(R.id.action_wordsFragment_to_menuFragment)
         }
 
-
-
     }
+    
 
     override fun onPause() {
         super.onPause()
@@ -128,9 +146,10 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
 
 
     companion object{
-        fun newInstance(setName: String) =
+        fun newInstance(setName: String, newSet : Boolean) =
                 Bundle().apply {
                     putString(SET, setName)
+                    putBoolean(NEW, newSet)
                 }
     }
 }

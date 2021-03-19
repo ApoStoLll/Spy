@@ -56,6 +56,7 @@ class WordsListAdapter(
             binding.textWord.setText(item.word)
             binding.textWord.isEnabled = item.editable
             binding.textWord.requestFocus()
+            if(item.editable) binding.imageGarbage.setImageResource(R.drawable.ic_save)
             binding.imageGarbage.setOnClickListener {
                 item.word = binding.textWord.text.toString()
                 onClickListener?.invoke(item)

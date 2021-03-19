@@ -28,12 +28,17 @@ class WordsViewModel(
 
     }
 
-    fun update(oldSetName : String, newSetName : String,data : List<WordListModel>){
+    fun chooseSet(setName : String){
         viewModelScope.launch {
-            settingsRepository.setSet(newSetName)
+            settingsRepository.setSet(setName)
         }
-        removeWordsInCategory(oldSetName)
-        addWords(data,newSetName)
+    }
+
+    fun updateSetName(oldSetName : String, newSetName : String,data : List<WordListModel>){
+        if(oldSetName != newSetName) {
+            removeWordsInCategory(oldSetName)
+            addWords(data, newSetName)
+        }
     }
 
     fun addWords(words : List<WordListModel>, category : String){

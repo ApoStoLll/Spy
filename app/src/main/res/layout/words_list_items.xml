@@ -23,7 +23,7 @@
             android:maxLength="15"
             android:hint="@string/print_word"
             android:textColor="@color/white"
-            android:textSize="28sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/image_garbage"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,13 +39,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_garbage" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_line" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

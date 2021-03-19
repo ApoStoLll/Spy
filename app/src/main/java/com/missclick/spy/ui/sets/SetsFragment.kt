@@ -31,7 +31,7 @@ class SetsFragment : Fragment(R.layout.fragment_sets) {
                 CollectionsModel(name = it)
             }.toMutableList()
             binding.recycleSets.adapter = CollectionsListAdapter(collections){
-                findNavController().navigate(R.id.action_setsFragment_to_wordsFragment, WordsFragment.newInstance(setName = it.name))
+                findNavController().navigate(R.id.action_setsFragment_to_wordsFragment, WordsFragment.newInstance(setName = it.name, newSet = false))
             }
             binding.recycleSets.layoutManager = LinearLayoutManager(requireActivity())
         }
@@ -41,6 +41,8 @@ class SetsFragment : Fragment(R.layout.fragment_sets) {
         binding.appCompatImageButton1.setOnClickListener {
             findNavController().navigateUp()
         }
-
+        binding.cardAdd.setOnClickListener {
+            findNavController().navigate(R.id.action_setsFragment_to_wordsFragment,WordsFragment.newInstance(setName = "", newSet = true))
+        }
     }
 }
