@@ -1,22 +1,22 @@
 package com.missclick.spy.ui.words
 
 import android.content.Context
-import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.missclick.spy.R
 import com.missclick.spy.adapters.WordsListAdapter
 import com.missclick.spy.data.models.WordListModel
 import com.missclick.spy.databinding.FragmentWordsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import android.util.Log
-import androidx.annotation.RequiresApi
 
 
 const val SET = "name"
@@ -85,7 +85,8 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
                     binding.textSetName.isEnabled = false
                     add = false
                     binding.imagePen.setImageResource(R.drawable.ic_pen)
-                    viewModel.updateSetName(oldSetName = setName!!,newSetName = binding.textSetName.text.toString(),data = words)
+                    Log.e("words",words.toString())
+                    viewModel.updateSetName(oldSetName = setName!!,newSetName = binding.textSetName.text.toString(),data = words.toList())
                     words.add(WordListModel("",true))
                     adapter.updateWordListItems(words)
                     val a = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -99,6 +100,7 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
                     edit = false
                     viewModel.updateSetName(oldSetName = setName!!,newSetName = binding.textSetName.text.toString(),data = words)
                     binding.textSetName.isEnabled = false
+                    setName = binding.textSetName.text.toString()
                     (context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).
                     hideSoftInputFromWindow(view.windowToken, 0)
                 }
@@ -130,9 +132,19 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
             val data = adapter.getList()
             val oldName = setName!!
             val newName = binding.textSetName.text.toString()
-            viewModel.updateSetName(oldSetName = oldName,newSetName = newName,data = data)
-            viewModel.chooseSet(newName)
-            findNavController().navigate(R.id.action_wordsFragment_to_menuFragment)
+            if(data.size != 0){
+                viewModel.updateSetName(oldSetName = oldName,newSetName = newName,data = data)
+                viewModel.chooseSet(newName)
+                findNavController().navigate(R.id.action_wordsFragment_to_menuFragment)
+            }
+            else{
+                val toast = Toast.makeText(
+                    context,
+                    getString(R.string.toast_empty_set),
+                    Toast.LENGTH_SHORT
+                )
+                toast.show()
+            }
         }
 
     }

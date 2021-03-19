@@ -23,6 +23,7 @@
     <string name="print_word">Введите локацию</string>
     <string name="add_word">Добавить слово</string>
     <string name="add_set">Добавить набор</string>
+    <string name="toast_empty_set">Нельзя выбрать пустой набор</string>
 
     <string name="first_page_title">Как насчет сыграть в шпиона?</string>
     <string name="first_page_text">Листай и мы расскажем тебе что нужно делать.</string>
