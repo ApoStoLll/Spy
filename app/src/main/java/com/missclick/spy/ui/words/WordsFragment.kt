@@ -7,6 +7,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -128,6 +129,10 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
             }
         }
         binding.imageGarbage.setOnClickListener {
+            viewModel.set.asLiveData().observe(viewLifecycleOwner){
+                if(it == setName!!)
+                    viewModel.chooseSet(getString(R.string.basic))
+            }
             viewModel.removeWordsInCategory(category = setName!!)
             findNavController().navigateUp()
             val a = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

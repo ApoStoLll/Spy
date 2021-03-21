@@ -47,7 +47,7 @@ class ViewPagerFragment : Fragment(R.layout.fragment_view_pager){
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                if(position == 4) binding.btnNext.text = getString(R.string.next)
+                if(position == 6) binding.btnNext.text = getString(R.string.next)
                 else binding.btnNext.text = getString(R.string.skip)
             }
         })
