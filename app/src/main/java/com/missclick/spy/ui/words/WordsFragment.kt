@@ -138,12 +138,22 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
             val a = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             a.hideSoftInputFromWindow(view?.windowToken, 0)
         }
-        binding.appCompatImageButton.setOnClickListener {
+        fun quit(){
+            viewModel.set.asLiveData().observe(viewLifecycleOwner){
+                if(it == setName!! && adapter.getList().size == 0)
+                    viewModel.chooseSet(getString(R.string.basic))
+            }
             findNavController().navigateUp()
+            val a = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            a.hideSoftInputFromWindow(view?.windowToken, 0)
+        }
+        binding.appCompatImageButton.setOnClickListener {
+            quit()
         }
         binding.appCompatImageButton1.setOnClickListener {
-            findNavController().navigateUp()
+            quit()
         }
+
         binding.buttonChoose.setOnClickListener {
             val data = adapter.getList()
             val oldName = setName!!
