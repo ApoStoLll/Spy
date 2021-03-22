@@ -22,8 +22,8 @@ class LocalDataSource(private val wordsDB: WordsDB) : ILocalDataSource{
     }
 
     override suspend fun removeWord(word: WordEntitity) {
-        wordsDB.dao().remove(word)
-        Log.e(word.word,word.category)
+        wordsDB.dao().remove(word = word.word, category = word.category)
+        Log.e(word.word, word.category)
     }
 
 }

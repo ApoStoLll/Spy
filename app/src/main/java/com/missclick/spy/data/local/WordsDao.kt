@@ -14,8 +14,9 @@ interface WordsDao{
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(words : List<WordEntitity>)
 
-    @Delete
-    fun remove(word: WordEntitity)
+    //@Delete
+    @Query("DELETE FROM db WHERE category = :category AND word = :word")
+    fun remove(word: String, category: String)
 
     @Query("SELECT * FROM db WHERE id = :id")
     fun getId(id : Int) : WordEntitity

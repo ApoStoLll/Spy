@@ -1,5 +1,6 @@
 package com.missclick.spy.ui.words
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
@@ -21,6 +22,7 @@ class WordsViewModel(
 
     fun getWords(setName : String) = liveData<List<String>>(Dispatchers.IO) {
         try {
+            Log.e("Words", setName)
             emit(repository.getWordsFromCategoryByName(setName))
         } catch (e : Exception){
             e.printStackTrace()
@@ -56,6 +58,7 @@ class WordsViewModel(
     }
 
     fun removeWord(word : WordListModel, category : String){
+        Log.e("RemoveWord", "${word.word}$category")
         viewModelScope.launch(Dispatchers.IO) {
             repository.removeWord(WordsModel(word = word.word, category = category))
         }
