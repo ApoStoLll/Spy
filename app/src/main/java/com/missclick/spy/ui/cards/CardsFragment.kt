@@ -1,5 +1,6 @@
 package com.missclick.spy.ui.cards
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -35,6 +36,7 @@ class CardsFragment : Fragment(R.layout.fragment_cards) {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 //        viewModel.getRandomWord(params!!.category).observe(viewLifecycleOwner){
@@ -58,7 +60,7 @@ class CardsFragment : Fragment(R.layout.fragment_cards) {
                         is CardState.ClosedCard ->
                             binding.apply {
                                 roleImageBottom.visibility = View.GONE
-                                nameRoleBottom.text = it.number.toString()
+                                nameRoleBottom.text = getString(R.string.player) + " " + it.number.toString()
                                 descriptionRoleBottom.text = getString(R.string.click_to_see_you_role)
                             }
                         is CardState.OpenedCard -> {
