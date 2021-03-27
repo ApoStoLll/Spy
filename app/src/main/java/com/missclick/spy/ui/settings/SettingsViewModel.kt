@@ -3,17 +3,18 @@ package com.missclick.spy.ui.settings
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.missclick.spy.data.local.SettingsRepository
-import com.missclick.spy.data.models.GameParams
+import com.missclick.spy.utills.LocalLanguage
 import kotlinx.coroutines.launch
-import org.intellij.lang.annotations.Language
+import java.util.*
 
 class SettingsViewModel(private val settingsRepository: SettingsRepository) : ViewModel() {
 
     val language = settingsRepository.language
 
-    fun setLanguage(language : String){
+    fun setLanguage(language: LocalLanguage){
         viewModelScope.launch {
-            settingsRepository.setLanguage(language)
+            val lang = LocalLanguage.mapLangToString(language)
+            settingsRepository.setLanguage(lang)
         }
     }
 }

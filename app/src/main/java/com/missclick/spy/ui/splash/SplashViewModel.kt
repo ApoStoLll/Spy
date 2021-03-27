@@ -20,6 +20,7 @@ class SplashViewModel(private val repository: IRepository,
     : ViewModel() {
 
     val ids = MutableLiveData<List<Long>>()
+    val language = settingsRepository.language
     //val firstLaunch = settingsRepository.firstLaunch
 
     fun setFirstLaunch(status : Boolean){

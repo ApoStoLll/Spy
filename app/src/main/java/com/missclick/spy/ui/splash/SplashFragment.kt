@@ -11,6 +11,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.missclick.spy.R
 import com.missclick.spy.data.models.WordsModel
 import com.missclick.spy.databinding.FragmentSplashBinding
+import com.missclick.spy.utills.LocalLanguage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SplashFragment : Fragment(R.layout.fragment_splash){
@@ -19,19 +20,21 @@ class SplashFragment : Fragment(R.layout.fragment_splash){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getFirstLaunch().observe(viewLifecycleOwner){
-            if(it)
-                viewModel.preloadDb(getWordsFromStringArray())
-            else {
-                Log.e("splash", "go")
+        viewModel.language.asLiveData().observe(viewLifecycleOwner){ lang ->
+            LocalLanguage.changeLocale(resources, LocalLanguage.mapStringToLang(lang))
+            viewModel.getFirstLaunch().observe(viewLifecycleOwner){
+                if(it)
+                    viewModel.preloadDb(getWordsFromStringArray())
+                else {
+                    Log.e("splash", "go")
+                    findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
+                }
+            }
+            viewModel.ids.observe(viewLifecycleOwner){
+                viewModel.setFirstLaunch(false)
                 findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
             }
         }
-        viewModel.ids.observe(viewLifecycleOwner){
-            viewModel.setFirstLaunch(false)
-            findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
-        }
-
     }
 
     private fun getWordsFromStringArray() : List<WordsModel>{

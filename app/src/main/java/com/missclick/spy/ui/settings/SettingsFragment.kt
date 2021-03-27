@@ -15,8 +15,10 @@ import com.missclick.spy.R
 import com.missclick.spy.data.local.SettingsRepository
 import com.missclick.spy.databinding.FragmentSettingsBinding
 import com.missclick.spy.ui.menu.MenuViewModel
+import com.missclick.spy.utills.LocalLanguage
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.*
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
     private val binding by viewBinding(FragmentSettingsBinding::bind)
@@ -31,21 +33,25 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.language.asLiveData().observe(viewLifecycleOwner){
-            updateColor(it)
+            updateColor(LocalLanguage.mapStringToLang(it))
             Log.e("upd",it)
         }
 
         //todo instead of activity as MainActivity - settingsRepository
         binding.cardViewEng.setOnClickListener {
-            viewModel.setLanguage("eng")
+            LocalLanguage.changeLocale(resources, LocalLanguage.English)
+            //resources.configuration.setLocale(Locale(LocalLanguage.mapLangToString(LocalLanguage.English)))
+            viewModel.setLanguage(LocalLanguage.English)
         }
 
         binding.cardViewRus.setOnClickListener {
-            viewModel.setLanguage("rus")
+            LocalLanguage.changeLocale(resources, LocalLanguage.Russian)
+            viewModel.setLanguage(LocalLanguage.Russian)
         }
 
         binding.cardViewUkr.setOnClickListener {
-            viewModel.setLanguage("ukr")
+            LocalLanguage.changeLocale(resources, LocalLanguage.Ukrainian)
+            viewModel.setLanguage(LocalLanguage.Ukrainian)
         }
 
         binding.appCompatImageButton.setOnClickListener {
@@ -57,16 +63,20 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     }
 
-    private fun updateColor(lang : String){
+    private fun updateColor(lang : LocalLanguage){
         val white = R.color.white
         binding.textRus.setTextColor(resources.getColor(white))
         binding.textEng.setTextColor(resources.getColor(white))
         binding.textUkr.setTextColor(resources.getColor(white))
         val orange = R.color.orange
-        if (lang == "rus") binding.textRus.setTextColor(resources.getColor(orange))
-        if (lang == "eng") binding.textEng.setTextColor(resources.getColor(orange))
-        if (lang == "ukr") binding.textUkr.setTextColor(resources.getColor(orange))
-
+        when(lang){
+            is LocalLanguage.English -> binding.textEng.setTextColor(resources.getColor(orange))
+            is LocalLanguage.Russian -> binding.textRus.setTextColor(resources.getColor(orange))
+            is LocalLanguage.Ukrainian -> binding.textUkr.setTextColor(resources.getColor(orange))
+        }
+//        if (lang == "rus") binding.textRus.setTextColor(resources.getColor(orange))
+//        if (lang == "eng") binding.textEng.setTextColor(resources.getColor(orange))
+//        if (lang == "ukr") binding.textUkr.setTextColor(resources.getColor(orange))
     }
 
 }
