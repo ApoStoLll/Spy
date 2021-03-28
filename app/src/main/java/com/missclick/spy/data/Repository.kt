@@ -21,7 +21,7 @@ class Repository(private val localDataSource: ILocalDataSource) : IRepository {
                 category = wordsModel.category
             )
         )
-        Log.e("Repository", id.toString())
+        //Log.e("Repository", id.toString())
         return id
     }
 

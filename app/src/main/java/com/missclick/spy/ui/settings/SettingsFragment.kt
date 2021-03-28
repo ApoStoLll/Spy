@@ -16,6 +16,7 @@ import com.missclick.spy.data.local.SettingsRepository
 import com.missclick.spy.databinding.FragmentSettingsBinding
 import com.missclick.spy.ui.menu.MenuViewModel
 import com.missclick.spy.utills.LocalLanguage
+import com.missclick.spy.utills.SetsManager
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
@@ -23,6 +24,7 @@ import java.util.*
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
     private val binding by viewBinding(FragmentSettingsBinding::bind)
     private val viewModel : SettingsViewModel by viewModel()
+    private val setsManager : SetsManager by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +37,13 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         viewModel.language.asLiveData().observe(viewLifecycleOwner){
             updateColor(LocalLanguage.mapStringToLang(it))
             Log.e("upd",it)
+        }
+
+        viewModel.initManager.observe(viewLifecycleOwner){
+            if(it){
+                setsManager.initSets(resources)
+                viewModel.preloadDb(setsManager.getWords())
+            }
         }
 
         //todo instead of activity as MainActivity - settingsRepository
