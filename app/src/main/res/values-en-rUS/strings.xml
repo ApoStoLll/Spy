@@ -92,24 +92,24 @@ You can also play without voting, instead, all players on the count of 3 must po
 </string>
 
     <string name="guide_fifth_title">Why you need a timer</string>
-    <string name="guide_fifth_text">Если местные успели разоблачить Шпиона до того, как прозвучал
-таймер, то они выиграют. Если Шпион смог продержаться все это время -
-выигрывает он.
+    <string name="guide_fifth_text">If the locals managed to expose the Spy before he sounded
+timer, then they will win. If the Spy could last all this time -
+he wins.
 </string>
 
-    <string name="guide_sixth_title">Как играть в режиме с несколькими Шпионами?</string>
-    <string name="guide_sixth_text">Количество Шпионов всегда должно быть меньше, чем количество
-местных. Каждый Шпион играет сам на себя, ведь выигрывает только один.
-Чтобы победить, местные теперь должны разоблачить всех шпионов. Если
-же они разоблачают не всех, то побеждают именно те Шпионы, которых не
-разоблачили. В случае, когда все игроки голосуют против человека, которого
-считают Шпионом: если он оказывается местным - Шпионы побеждают.
-Если же местные угадывают - разоблаченный Шпион выходит из игры, а
-сама игра длится дальше, ведь нужно вычислить всех шпионов. В случае
-когда один из Шпионов называет локацию: Если он угадывает, игра
-заканчивается и этот Шпион побеждает. Если же он называет неправильное
-место - игра продолжается без него. Карточки выпадают совершенно
-случайно, так что ваша роль зависит лишь от вашей удачи!
+    <string name="guide_sixth_title">How do I play Multi-Spy Mode? </string>
+    <string name="guide_sixth_text">The number of Spies should always be less than the number
+local. Each Spy plays for himself, because only one wins.
+To win, the locals must now expose all the spies. If a
+since they do not expose everyone, then it is precisely those Spies who are not
+exposed. In the case when all players vote against the person who
+Consider a Spy: if he turns out to be local, the Spies win.
+If the locals guess right, the exposed Spy leaves the game, and
+the game itself continues, because you need to figure out all the spies. When
+when one of the Spies calls the location: If he guesses, the game
+ends and this Spy wins. If he calls the wrong
+place - the game continues without him. Cards fall out completely
+by chance, so your role only depends on your luck!
 </string>
 
 
