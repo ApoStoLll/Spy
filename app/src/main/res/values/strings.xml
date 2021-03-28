@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name">Spy</string>
     <string name="back">Назад</string>
-    <string name="skip">Пропустить</string>
-    <string name="next">Далее</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
 
-    <string name="min">мин</string>
-    <string name="players">Игроки</string>
-    <string name="start">Старт</string>
-    <string name="player">Игрок</string>
-    <string name="spies">Шпионы</string>
-    <string name="timer">Таймер</string>
+    <string name="min">min</string>
+    <string name="players">Players</string>
+    <string name="start">Start</string>
+    <string name="player">Player</string>
+    <string name="spies">Spies</string>
+    <string name="timer">Timer</string>
     <string name="set">Набор</string>
     <string name="click_to_see_you_role">Нажми, чтобы увидеть свою роль</string>
     <string name="you_member">Ты местный. Все игроки, кроме Шпиона, знают эту локацию. Задавай вопросы другим игрокам, чтоб узнать кто из них шпион</string>
@@ -130,7 +130,7 @@
     <string name="rus">Русский</string>
     <string name="ukr">Українська</string>
 
-    <string name="basic">Базовый</string>
+    <string name="basic">Basic</string>
     <string-array name="basic">
         <item>Цирк(Если ты не волк)</item>
         <item>Парк</item>
@@ -138,12 +138,97 @@
         <item>Дискорд с дотерами</item>
     </string-array>
 
-    <string name="countries">Страны</string>
+    <string name="countries">Countries</string>
     <string-array name="countries">
-        <item>Цирк(Если ты не волк)</item>
-        <item>Парк</item>
-        <item>Магазин</item>
-        <item>Ддискорд с дотерами</item>
+        <item>Ukraine</item>
+        <item>USA</item>
+        <item>Germany</item>
+        <item>Spain</item>
+        <item>Portugal</item>
+        <item>Italy</item>
+        <item>France</item>
+        <item>Netherlands</item>
+        <item>United Kingdom</item>
+        <item>China</item>
+        <item>North Korea</item>
+        <item>Japan</item>
+        <item>Brazil</item>
+        <item>Mexico</item>
+        <item>Poland</item>
+        <item>Hungary</item>
+        <item>Belarus</item>
+        <item>Turkey</item>
+        <item>India</item>
+        <item>Australia</item>
+    </string-array>
+
+    <string name="objects">Objects</string>
+    <string-array name="objects">
+        <item> Residential building </item>
+        <item> Supermarket </item>
+        <item> Auto market </item>
+        <item> Food Market </item>
+        <item> Ice Arena </item>
+        <item> Bunker </item>
+        <item> Landfill </item>
+        <item> Garage </item>
+        <item> Country house </item>
+        <item> Putin's Palace </item>
+        <item> Church </item>
+        <item> Cemetery </item>
+        <item> Coffin </item>
+        <item> Elevator </item>
+        <item> Subway Escalator </item>
+        <item> Park </item>
+        <item> Casino </item>
+        <item> Bank </item>
+        <item> Military Hospital </item>
+        <item> Film Studio </item>
+        <item> Ocean Liner </item>
+        <item> Vegetable base </item>
+        <item> School </item>
+        <item> Kindergarten </item>
+        <item> Hotel </item>
+        <item> Gas station (refueling) </item>
+        <item> Car wash </item>
+        <item> Bar </item>
+        <item> Hardware store </item>
+        <item> Service station </item>
+        <item> Tire service </item>
+        <item> Space Station </item>
+        <item> Moon </item>
+        <item> Mars </item>
+        <item> Restaurant </item>
+        <item> Submarine </item>
+        <item> Beach </item>
+        <item> Desert </item>
+        <item> Party </item>
+        <item> Embassy </item>
+        <item> Aircraft </item>
+        <item> Helicopter </item>
+        <item> Amphitheater </item>
+        <item> Hairdresser </item>
+        <item> Pharmacy </item>
+        <item> Library </item>
+        <item> Gym </item>
+        <item> Swimming pool </item>
+    </string-array>
+
+    <string name="transport">Transport</string>
+    <string-array name="transport">
+        <item> Tram </item>
+        <item> Trolleybus </item>
+        <item> Bus </item>
+        <item> Passenger car </item>
+        <item> Truck </item>
+        <item> Truck </item>
+        <item> Metro </item>
+        <item> Tractor "Belarus" </item>
+        <item> Bulldozer </item>
+        <item> Excavator </item>
+        <item> Crane </item>
+        <item> Garbage Truck </item>
+        <item> Carriage </item>
     </string-array>
 
 </resources>

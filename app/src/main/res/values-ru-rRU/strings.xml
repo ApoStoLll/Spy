@@ -44,7 +44,7 @@
 
     <string name="fifth_page_title">Голосуйте</string>
     <string name="fifth_page_text">Скажи: “Я нашел Шпиона” и назови его Имя. После чего проводится
-голосование. Все игроки голосуют за то, есть ли названый игрок Шпионом.
+голосование. Все игроки голосуют за то, является ли названый игрок Шпионом.
 </string>
 
     <string name="sixth_page_title">Победа?</string>
@@ -140,10 +140,95 @@
 
     <string name="countries">Страны</string>
     <string-array name="countries">
-        <item>Цирк(Если ты не волк)</item>
+        <item>Украина</item>
+        <item>США</item>
+        <item>Германия</item>
+        <item>Испания</item>
+        <item>Португалия</item>
+        <item>Италия</item>
+        <item>Франция</item>
+        <item>Нидерланды</item>
+        <item>Великобритания</item>
+        <item>Китай</item>
+        <item>Северная Корея</item>
+        <item>Япония</item>
+        <item>Бразилия</item>
+        <item>Мексика</item>
+        <item>Польша</item>
+        <item>Венгрия</item>
+        <item>Беларусь</item>
+        <item>Турция</item>
+        <item>Индия</item>
+        <item>Австралия</item>
+    </string-array>
+
+    <string name="objects">Объекты</string>
+    <string-array name="objects">
+        <item>Жилой дом</item>
+        <item>Супермаркет</item>
+        <item>Рынок автозапчастей</item>
+        <item>Продовольвенный рынок </item>
+        <item>Ледовая арена</item>
+        <item>Бункер</item>
+        <item>Свалка</item>
+        <item>Гараж</item>
+        <item>Дача</item>
+        <item>Дворец Путина</item>
+        <item>Церковь</item>
+        <item>Кладбище</item>
+        <item>Гроб</item>
+        <item>Лифт</item>
+        <item>Эскалатор метро</item>
         <item>Парк</item>
-        <item>Магазин</item>
-        <item>Ддискорд с дотерами</item>
+        <item>Казино</item>
+        <item>Банк</item>
+        <item>Военный госпиталь</item>
+        <item>Киностудия</item>
+        <item>Океанский лайнер</item>
+        <item>Овощебаза</item>
+        <item>Школа</item>
+        <item>Детский сад</item>
+        <item>Отель</item>
+        <item>АЗС (заправка)</item>
+        <item>Автомойка</item>
+        <item>Бар</item>
+        <item>Строительный магазин</item>
+        <item>Станция техобслуживания</item>
+        <item>Шиномонтаж</item>
+        <item>Космическая станция</item>
+        <item>Луна</item>
+        <item>Марс</item>
+        <item>Ресторан</item>
+        <item>Подводная лодка</item>
+        <item>Пляж</item>
+        <item>Пустыня</item>
+        <item>Вечеринка</item>
+        <item>Посольство</item>
+        <item>Самолет</item>
+        <item>Вертолет</item>
+        <item>Амфитеатр</item>
+        <item>Парикмахерская</item>
+        <item>Аптека</item>
+        <item>Библиотека</item>
+        <item>Спортивный зал</item>
+        <item>Бассейн</item>
+    </string-array>
+
+    <string name="transport">Транспорт</string>
+    <string-array name="transport">
+        <item>Трамвай</item>
+        <item>Тролейбус</item>
+        <item>Автобус</item>
+        <item>Легковая машина</item>
+        <item>Грузовик</item>
+        <item>Фура</item>
+        <item>Метрополитен</item>
+        <item>Трактор "Беларус"</item>
+        <item>Бульдозер</item>
+        <item>Экскаватор </item>
+        <item>Подъемный кран</item>
+        <item>Мусоровоз</item>
+        <item>Карета</item>
     </string-array>
 
 </resources>
