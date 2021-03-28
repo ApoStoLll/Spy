@@ -9,6 +9,7 @@ class SetsManager {
     private var sets  = mutableMapOf<String, Array<String>>()
 
     fun initSets(res : Resources){
+        sets = mutableMapOf<String, Array<String>>()
         val wordsBasic = res.getStringArray(R.array.basic)
         val wordsCountries = res.getStringArray(R.array.countries)
         val wordsTransport = res.getStringArray(R.array.transport)
