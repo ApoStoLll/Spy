@@ -10,7 +10,7 @@
     <string name="player">Player</string>
     <string name="spies">Spies</string>
     <string name="timer">Timer</string>
-    <string name="set">Набор</string>
+    <string name="set">Set</string>
     <string name="click_to_see_you_role">Нажми, чтобы увидеть свою роль</string>
     <string name="you_member">Ты местный. Все игроки, кроме Шпиона, знают эту локацию. Задавай вопросы другим игрокам, чтоб узнать кто из них шпион</string>
     <string name="you_spy_hint">Попробуй понять, про какую локацию говорят местные</string>
