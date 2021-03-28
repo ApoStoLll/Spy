@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Spy</string>
-    <string name="back">Назад</string>
+    <string name="back">Back</string>
     <string name="skip">Skip</string>
     <string name="next">Next</string>
 
@@ -10,97 +10,88 @@
     <string name="player">Player</string>
     <string name="spies">Spies</string>
     <string name="timer">Timer</string>
-    <string name="set">Набор</string>
-    <string name="click_to_see_you_role">Нажми, чтобы увидеть свою роль</string>
-    <string name="you_member">Ты местный. Все игроки, кроме Шпиона, знают эту локацию. Задавай вопросы другим игрокам, чтоб узнать кто из них шпион</string>
-    <string name="you_spy_hint">Попробуй понять, про какую локацию говорят местные</string>
-    <string name="you_spy">Ты шпион</string>
-    <string name="hint_timer">Начинайте задавать вопросы! Успейте вычислить Шпиона прежде, чем истечет время, иначе он победит</string>
-    <string name="was_spy">Шпионом был</string>
-    <string name="were_spies">Шпионами были</string>
-    <string name="restart">Еще раз</string>
-    <string name="choose">Выбрать набор</string>
-    <string name="print_word">Введите локацию</string>
-    <string name="add_word">Добавить слово</string>
-    <string name="add_set">Добавить набор</string>
-    <string name="toast_empty_set">Нельзя выбрать пустой набор</string>
-    <string name="new_set">Новый набор</string>
+    <string name="set">Set</string>
+    <string name="click_to_see_you_role">Click to see your role</string>
+    <string name="you_member">You are a local. All players except a spy know this location. Ask your friends different questions to figure out which one of them is a spy</string>
+    <string name="you_spy_hint">Try to figure out what location the locals are talking about</string>
+    <string name="you_spy">You are a spy</string>
+    <string name="hint_timer">Start asking questions! Find a Spy before the time runs out, otherwise he will win</string>
+    <string name="was_spy">A Spy was</string>
+    <string name="were_spies">The Spies were</string>
+    <string name="restart">Once more</string>
+    <string name="choose">Choose a set</string>
+    <string name="print_word">Enter a location</string>
+    <string name="add_word">Add a word</string>
+    <string name="add_set">Add a set</string>
+    <string name="toast_empty_set">You cannot select an empty set</string>
+    <string name="new_set">New set</string>
 
-    <string name="first_page_title">Как насчет сыграть в шпиона?</string>
-    <string name="first_page_text">Листай и мы расскажем тебе что нужно делать</string>
+    <string name="first_page_title">How about playing Spy?</string>
+    <string name="first_page_text">Swipe and we will tell you what to do</string>
 
-    <string name="second_page_title">Роли</string>
-    <string name="second_page_text">В игре ты либо местный, либо Шпион. Только местные знают локацию и они должны найти Шпиона, а шпион угадать игровую локацию</string>
+    <string name="second_page_title">Roles</string>
+    <string name="second_page_text">In the game, you are either a local or a Spy. Only locals know the location and they must find the Spy, while the spy must guess the game location</string>
 
-    <string name="third_page_title">Расспрашивайте</string>
-    <string name="third_page_text">Вы можете задавать вопросы относительно игровой локации.
-Отвечающий игрок следующим будет задавать вопрос.
-Первым задает вопрос игрок который был шпионом в прошлой игре</string>
+    <string name="third_page_title">Ask questions</string>
+    <string name="third_page_text">You can ask questions about the game location.
+The responding player will be the next to ask the question.
+The player who was a Spy in the last game  is the first to ask a question</string>
 
-    <string name="fourth_page_title">Слушайте</string>
-    <string name="fourth_page_text">Внимательно прислушивайтесь к ответам и вопросам других
-игроков.Помните, Шпион не знает локацию, из-за чего может
-действовать некорректно</string>
+    <string name="fourth_page_title">Listen</string>
+    <string name="fourth_page_text">Listen carefully to the answers and questions of other players.
+Remember, the Spy does not know the location, which is why he may
+act incorrectly</string>
 
-    <string name="fifth_page_title">Голосуйте</string>
-    <string name="fifth_page_text">Скажи: “Я нашел Шпиона” и назови его Имя. После чего проводится
-голосование. Все игроки голосуют за то, есть ли названый игрок Шпионом.
+    <string name="fifth_page_title">Vote</string>
+    <string name="fifth_page_text">Say: “I found the Spy” and say his/her Name. After that a vote is taken.
+All players vote on whether the named player is a Spy
 </string>
 
-    <string name="sixth_page_title">Победа?</string>
-    <string name="sixth_page_text">При согласии всех игроков выставленный игрок показывает свою
-карточку. Если он оказывается местным, то Шпион побеждает. Если же
-этот человек действительно Шпион - побеждают местные. Если не все игроки согласны, то игра продолжается. Если Шпион догадался о обсуждаемой локации, то он может ее
-назвать. Если Шпион ее угадал, то он побеждает. В противном же
-случае его ждет поражение</string>
+    <string name="sixth_page_title">Victory?</string>
+    <string name="sixth_page_text">If all players agree, the player selected by the vote shows his card. If he turns out to be a local, then the Spy wins. If this person is really a Spy, the locals win.
+If not all players agree, then the game continues. If the Spy guessed about the discussed location, then he can name it.
+If the Spy guessed it, then he wins. Otherwise, he will be defeated.</string>
 
-    <string name="seventh_page_title">Таймер</string>
-    <string name="seventh_page_text">Не забывайте про время. Оно ограничено и играет на шпиона, так что
-поторопись.
-По окончанию таймера Шпион побеждает</string>
+    <string name="seventh_page_title">Timer</string>
+    <string name="seventh_page_text">Don`t forget about the time. It`s limited, so hurry up.
+When the time is up, the Spy wins</string>
 
 
-    <string name="guide_first_title">Ну что, начнем?</string>
-    <string name="guide_first_text">Для начала выберите условия игры: набор слов, время игры,
-количество игроков и шпионов, а также язык игры.
+    <string name="guide_first_title">So, let`s start?</string>
+    <string name="guide_first_text">First, select the conditions of the game: a set of words, the time of the game,
+the number of players and spies and the game language.
 </string>
 
-    <string name="guide_second_title">А как же все таки играть?</string>
-    <string name="guide_second_text">В игре есть две роли: местный и шпион. Чтобы каждый узнал свою
-роль передавайте телефон по очереди каждому из игроков.
+    <string name="guide_second_title">So how to play?</string>
+    <string name="guide_second_text">There are two roles in the game: a local and a spy. For everyone to know their roles,
+pass the phone to each player in turn.
 </string>
 
-    <string name="guide_third_title">А другой игрок не увидит мою роль?</string>
-    <string name="guide_third_text">Когда ты нажмешь на карточку, она перевернется. На обратной стороне
-ты или узнаешь локацию, или обрадуешься от новости, что ты и есть Шпион.
-После еще одного нажатия твоя карточка спрячется и ты увидишь обложку
-следующей карточки. Тогда передай телефон следующему игроку, чтоб он ее
-перевернул и узнал свою роль.
-Когда все узнали свои роли, начинайте игру. Задавайте друг другу
-вопросы о месте, которое было на карточках местных, например: “Какого
-цвета это место?”, “Как часто ты там бываешь?”, “Хочется ли в это место
-возвращаться?”. Главная задача местных - вычислить Шпиона(или же
-Шпионов в зависимости от настроек игры), который не имеет понятия, о
-каком месте идет речь. Задание Шпиона - делать вид что он местный и знает
-игровую локацию и пытаться угадать на какой же все-таки локации
-находятся игроки.
+    <string name="guide_third_title">Won’t the other players see my role?</string>
+    <string name="guide_third_text">When you click on the card, it will turn over. On the reverse side,
+you will either find out the location, or be glad to know that you are the Spy.
+After another click, your card will hide and you will see the cover of the next card.
+Then pass the phone to the next player, so that he turned over his card.
+When everyone knows their roles, start the game. Ask each other questions about the place that was on the cards of the locals, for example: “What color is this place?”,
+“How often do you go there?”, “Do you want to return to this place?”.
+The main task of the locals is to find the Spy (or Spies), he has no idea what place you are talking about.
+The Spy`s job is to pretend he is local and knows the game location.
+He has to try to guess what location the players are at.
 </string>
 
-    <string name="guide_fourth_title">Что же делать если ты догадываешься кто Шпион?</string>
-    <string name="guide_fourth_text">Скажи: “Я нашел Шпиона” и назови его Имя. После чего проводится
-голосование. Все игроки голосуют есть ли названый игрок Шпионом.
-Только при согласии всех игроков выставленный игрок показывает свою
-карточку. Если он оказывается местным, то Шпион побеждает. Если же этот
-человек действительно Шпион - побеждают местные. Если не все игроки
-согласны, то игра продолжается.
-Так же можно играть без голосования, вместо него все игроки на счет
-три должны показать на игрока который по их мнению является Шпионом.
+    <string name="guide_fourth_title">What if you guess who the Spy is?</string>
+    <string name="guide_fourth_text">Say: “I found the Spy” and say his/her Name. After that a vote is taken.
+All players vote on whether the named player is a Spy.
+If all players agree, the player selected by the vote shows his card. If he turns out to be a local, then the Spy wins.
+If this person is really a Spy, the locals win.
+If not all players agree, then the game continues.
+You can also play without voting, instead, all players on the count of 3 must point to the player who, in their opinion, is a Spy.
 Если все выбрали одного и того же игрока, то он должен раскрыть свою роль.Если я Шпион и догадался локацию, что мне делать? Просто скажи: “Я
 знаю локацию” и назви её. Если ты угадаешь, то выиграешь. Ошибаешься -
 выиграют местные
 </string>
 
-    <string name="guide_fifth_title">А зачем нужен таймер</string>
+    <string name="guide_fifth_title">Why you need a timer</string>
     <string name="guide_fifth_text">Если местные успели разоблачить Шпиона до того, как прозвучал
 таймер, то они выиграют. Если Шпион смог продержаться все это время -
 выигрывает он.
@@ -122,9 +113,10 @@
 </string>
 
 
-    <string name="find">Узнать, кто шпион</string>
+    <string name="find">Find out who the spy is</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
     <string name="eng">English</string>
     <string name="rus">Русский</string>
