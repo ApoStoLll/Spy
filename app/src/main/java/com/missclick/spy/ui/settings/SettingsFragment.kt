@@ -42,6 +42,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         viewModel.initManager.observe(viewLifecycleOwner){
             if(it){
                 setsManager.initSets(resources)
+                Log.e("Init","sets")
                 viewModel.preloadDb(setsManager.getWords())
             }
         }

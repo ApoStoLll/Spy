@@ -13,12 +13,12 @@ class SetsManager {
         val wordsBasic = res.getStringArray(R.array.basic)
         val wordsCountries = res.getStringArray(R.array.countries)
         val wordsTransport = res.getStringArray(R.array.transport)
-        val wordsObjects = res.getStringArray(R.array.objects)
+
 
         sets[res.getString(R.string.basic)] = wordsBasic
         sets[res.getString(R.string.countries)] = wordsCountries
         sets[res.getString(R.string.transport)] = wordsTransport
-        sets[res.getString(R.string.objects)] = wordsObjects
+
     }
 
     fun getWords(): List<WordsModel> {

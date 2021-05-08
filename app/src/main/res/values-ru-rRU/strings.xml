@@ -130,13 +130,6 @@
     <string name="rus">Русский</string>
     <string name="ukr">Українська</string>
 
-    <string name="basic">Базовый</string>
-    <string-array name="basic">
-        <item>Цирк(Если ты не волк)</item>
-        <item>Парк</item>
-        <item>Магазин</item>
-        <item>Дискорд с дотерами</item>
-    </string-array>
 
     <string name="countries">Страны</string>
     <string-array name="countries">
@@ -162,8 +155,8 @@
         <item>Австралия</item>
     </string-array>
 
-    <string name="objects">Объекты</string>
-    <string-array name="objects">
+    <string name="basic">Базовый</string>
+    <string-array name="basic">
         <item>Жилой дом</item>
         <item>Супермаркет</item>
         <item>Рынок автозапчастей</item>

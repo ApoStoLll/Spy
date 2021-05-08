@@ -122,13 +122,6 @@ by chance, so your role only depends on your luck!
     <string name="rus">Русский</string>
     <string name="ukr">Українська</string>
 
-    <string name="basic">Basic</string>
-    <string-array name="basic">
-        <item>Цирк(Если ты не волк)</item>
-        <item>Парк</item>
-        <item>Магазин</item>
-        <item>Дискорд с дотерами</item>
-    </string-array>
 
     <string name="countries">Countries</string>
     <string-array name="countries">
@@ -154,8 +147,8 @@ by chance, so your role only depends on your luck!
         <item>Australia</item>
     </string-array>
 
-    <string name="objects">Objects</string>
-    <string-array name="objects">
+    <string name="basic">Basic</string>
+    <string-array name="basic">
         <item> Residential building </item>
         <item> Supermarket </item>
         <item> Auto parts market </item>

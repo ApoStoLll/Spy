@@ -11,11 +11,24 @@ class CardsViewModel(private val repository: IRepository) : ViewModel() {
 
     val cardState = MutableLiveData<CardState>(CardState.ClosedCard(1))
 
-
-    fun getRandomWord(category : String) = liveData<String>(Dispatchers.IO){
+    //old
+//    fun getRandomWord(category : String) = liveData<String>(Dispatchers.IO){
+//        try {
+//            val words = repository.getWordsFromCategoryByName(nameOfCategory = category)
+//            emit(words[(words.indices).random()])
+//        } catch (ex : Exception){
+//            ex.printStackTrace()
+//        }
+//
+//    }
+    //new
+    fun getRandomWord(category : String) = liveData(Dispatchers.IO){
         try {
             val words = repository.getWordsFromCategoryByName(nameOfCategory = category)
-            emit(words[(words.indices).random()])
+            val indices = (words.indices).shuffled()
+            val word1 = words[indices[0]]
+            val word2 = words[indices[1]]
+            emit(listOf(word1,word2))
         } catch (ex : Exception){
             ex.printStackTrace()
         }
