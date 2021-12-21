@@ -47,7 +47,7 @@ class SettingsRepository(private val context: Context) {
 
     val language : Flow<String>
         get() = dataStore.data.map {
-            return@map it[LANGUAGE] ?: Locale.getDefault().displayLanguage
+            return@map it[LANGUAGE] ?: Locale.getDefault().language;
         }
 
     suspend fun setPlayers(players : Int){
