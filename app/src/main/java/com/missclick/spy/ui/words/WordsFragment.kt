@@ -41,6 +41,10 @@ class WordsFragment : Fragment(R.layout.fragment_words) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.textSetName.setText(setName)
+        if(setName == getString(R.string.basic)) {
+            binding.imagePen.visibility = View.INVISIBLE
+            binding.imageGarbage.visibility = View.INVISIBLE
+        }
         val adapter =  WordsListAdapter()
         var add = true
         var edit = false
