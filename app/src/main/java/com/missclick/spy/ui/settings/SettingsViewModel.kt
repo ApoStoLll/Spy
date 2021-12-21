@@ -26,10 +26,11 @@ class SettingsViewModel(
 
     val language = settingsRepository.language
 
-    fun setLanguage(language: LocalLanguage){
+    fun setLanguage(language: LocalLanguage, setName : String){
         viewModelScope.launch(Dispatchers.IO) {
             val lang = LocalLanguage.mapLangToString(language)
             settingsRepository.setLanguage(lang)
+            settingsRepository.setSet(setName)
             updateDB()
         }
     }

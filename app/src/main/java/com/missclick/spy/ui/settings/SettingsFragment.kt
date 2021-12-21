@@ -51,17 +51,17 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         binding.cardViewEng.setOnClickListener {
             LocalLanguage.changeLocale(resources, LocalLanguage.English)
             //resources.configuration.setLocale(Locale(LocalLanguage.mapLangToString(LocalLanguage.English)))
-            viewModel.setLanguage(LocalLanguage.English)
+            viewModel.setLanguage(LocalLanguage.English, getString(R.string.basic))
         }
 
         binding.cardViewRus.setOnClickListener {
             LocalLanguage.changeLocale(resources, LocalLanguage.Russian)
-            viewModel.setLanguage(LocalLanguage.Russian)
+            viewModel.setLanguage(LocalLanguage.Russian, getString(R.string.basic))
         }
 
         binding.cardViewUkr.setOnClickListener {
             LocalLanguage.changeLocale(resources, LocalLanguage.Ukrainian)
-            viewModel.setLanguage(LocalLanguage.Ukrainian)
+            viewModel.setLanguage(LocalLanguage.Ukrainian, getString(R.string.basic))
         }
 
         binding.appCompatImageButton.setOnClickListener {
