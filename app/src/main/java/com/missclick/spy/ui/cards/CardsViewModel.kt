@@ -11,29 +11,29 @@ class CardsViewModel(private val repository: IRepository) : ViewModel() {
 
     val cardState = MutableLiveData<CardState>(CardState.ClosedCard(1))
 
-    //old
-//    fun getRandomWord(category : String) = liveData<String>(Dispatchers.IO){
-//        try {
-//            val words = repository.getWordsFromCategoryByName(nameOfCategory = category)
-//            emit(words[(words.indices).random()])
-//        } catch (ex : Exception){
-//            ex.printStackTrace()
-//        }
-//
-//    }
-    //new
-    fun getRandomWord(category : String) = liveData(Dispatchers.IO){
+    //old default mode
+    fun getRandomWord(category : String) = liveData<String>(Dispatchers.IO){
         try {
             val words = repository.getWordsFromCategoryByName(nameOfCategory = category)
-            val indices = (words.indices).shuffled()
-            val word1 = words[indices[0]]
-            val word2 = words[indices[1]]
-            emit(listOf(word1,word2))
+            emit(words[(words.indices).random()])
         } catch (ex : Exception){
             ex.printStackTrace()
         }
 
     }
+    //new hard mode
+//    fun getRandomWord(category : String) = liveData(Dispatchers.IO){
+//        try {
+//            val words = repository.getWordsFromCategoryByName(nameOfCategory = category)
+//            val indices = (words.indices).shuffled()
+//            val word1 = words[indices[0]]
+//            val word2 = words[indices[1]]
+//            emit(listOf(word1,word2))
+//        } catch (ex : Exception){
+//            ex.printStackTrace()
+//        }
+//
+//    }
 
     fun getSpy(players : Int) =
         (1..players).random()

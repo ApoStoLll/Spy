@@ -69,18 +69,18 @@ class CardsFragment : Fragment(R.layout.fragment_cards) {
                                 binding.apply {
                                     roleImageBottom.setImageResource(R.drawable.ic_spy_hat)
                                     //old
-                                    //nameRoleBottom.text = getString(R.string.you_spy)
-                                    //new
-                                    nameRoleBottom.text = role[1]
+                                    nameRoleBottom.text = getString(R.string.you_spy)
+                                    //new hard mode
+//                                    nameRoleBottom.text = role[1]
                                     descriptionRoleBottom.text = getString(R.string.you_spy_hint)
                                 }
                             else
                                 binding.apply {
                                     roleImageBottom.setImageResource(R.drawable.ic_member_location)
                                     //old
-                                    //nameRoleBottom.text = role
-                                    //new
-                                    nameRoleBottom.text = role[0]
+                                    nameRoleBottom.text = role
+                                    //new hard mode
+//                                    nameRoleBottom.text = role[0]
                                     descriptionRoleBottom.text = getString(R.string.you_member)
                                 }
                             binding.roleImage.visibility = View.VISIBLE
